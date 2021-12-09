@@ -3,6 +3,10 @@ require_once("./controllers/MainController.controller.php");
 require_once("./models/Utilisateur/Utilisateur.model.php");
 require_once("controllers/Toolbox.class.php");
 
+
+
+
+
 class UtilisateurController extends MainController
 {
     private $utilisateurManager;
@@ -29,12 +33,12 @@ class UtilisateurController extends MainController
             echo $_SESSION['profil'][Securite::COOKIE_NAME];
             echo "<br />";
             echo $_COOKIE[Securite::COOKIE_NAME];
-            header("location:http://localhost:9999/blog/index.php");
+            header("location:../blog/index.php");
             exit();
         } else {
             Toolbox::ajouterMessageAlerte("Combinaison Login / Mot de passe non valide", Toolbox::COULEUR_ROUGE);
             // $_SESSION['alert'] = 'ruben';
-            header("Location:http://localhost:9999/blog/login.php");
+            header("Location:../blog/login.php");
             exit();
             // var_dump($_SESSION['alert']);
 
@@ -48,9 +52,7 @@ class UtilisateurController extends MainController
         return $utilisateur;
     }
 
-    public function getUser()
-    {
-    }
+
 
 
 
@@ -60,7 +62,7 @@ class UtilisateurController extends MainController
         Toolbox::ajouterMessageAlerte("La deconnexion est effectuée", Toolbox::COULEUR_VERTE);
         unset($_SESSION['profil']);
         setcookie(Securite::COOKIE_NAME, "", time() - 3600);
-        header("location:http://localhost:9999/blog/index.php");
+        header("location:../blog/index.php");
         exit();
     }
     public function validation_creerCompte($login, $prenom, $nom, $password, $mail)
@@ -72,21 +74,21 @@ class UtilisateurController extends MainController
                 if ($this->utilisateurManager->bdCreerCompte($login, $prenom, $nom, $passwordCrypte, $mail, $clef, "profils/profil.png", "utilisateur")) {
 
                     Toolbox::ajouterMessageAlerte("Le compte est créé!", Toolbox::COULEUR_VERTE);
-                    header("Location:http://localhost:9999/blog/index.php");
+                    header("../blog/index.php");
                     exit();
                 } else {
                     Toolbox::ajouterMessageAlerte("Erreur lors de la création du compte, recommencez !", Toolbox::COULEUR_ROUGE);
-                    header("Location:http://localhost:9999/blog/inscription.php");
+                    header("../blog/inscription.php");
                     exit();
                 }
             } else {
                 Toolbox::ajouterMessageAlerte("Le login est déjà utilisé !", Toolbox::COULEUR_ROUGE);
-                header("Location:http://localhost:9999/blog/inscription.php");
+                header("../blog/inscription.php");
                 exit();
             }
         } else {
             Toolbox::ajouterMessageAlerte("Le login est vide!", Toolbox::COULEUR_ROUGE);
-            header("Location:http://localhost:9999/blog/inscription.php");
+            header("../blog/inscription.php");
             exit();
         }
     }
@@ -100,16 +102,9 @@ class UtilisateurController extends MainController
                     $datas = $this->utilisateurManager->getUserInformation($login);
                     $_SESSION['profil']["login"] = $datas['login'];
 
-                    $_SESSION['profil']["role"] = $datas['role'];
-                    $data_page = [
-                        "page_description" => "Page de profil",
-                        "page_title" => "Page de profil",
-                        "utilisateur" => $datas,
-                        "page_javascript" => ['profil.js'],
-                        "view" => "views/Utilisateur/profil.view.php",
-                        "template" => "views/common/template.php"
-                    ];
-                    $this->genererPage($data_page);
+                    $_SESSION['profil']["role"] = $datas['id_droits'];
+
+
 
 
                     /* Toolbox::ajouterMessageAlerte("La modification est effectuée, reconnectez-vous", Toolbox::COULEUR_VERTE); */
@@ -120,7 +115,8 @@ class UtilisateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Le login est vide", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: " . URL . "compte/profil");
+        header("Refresh:0; ../blog/profil.php");
+        exit();
     }
 
     public function validation_modificationPrenom($prenom)
@@ -130,7 +126,8 @@ class UtilisateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: " . URL . "compte/profil");
+        header("Refresh:0; ../blog/profil.php");
+        exit();
     }
 
 
@@ -141,7 +138,8 @@ class UtilisateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: " . URL . "compte/profil");
+        header("Refresh:0; ../blog/profil.php");
+        exit();
     }
 
 
@@ -152,7 +150,8 @@ class UtilisateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: " . URL . "compte/profil");
+        header("Refresh:0; ../blog/profil.php");
+        exit();
     }
 
     public function modificationPassword()
@@ -173,18 +172,22 @@ class UtilisateurController extends MainController
                 $passwordCrypte = password_hash($nouveauPassword, PASSWORD_DEFAULT);
                 if ($this->utilisateurManager->bdModificationPassword($_SESSION['profil']['login'], $passwordCrypte)) {
                     Toolbox::ajouterMessageAlerte("La modification du password a été effectuée", Toolbox::COULEUR_VERTE);
-                    header("Location: " . URL . "compte/profil");
+                    header("location:./profil.php");
+                    exit();
                 } else {
                     Toolbox::ajouterMessageAlerte("La modification a échouée", Toolbox::COULEUR_ROUGE);
-                    header("Location: " . URL . "compte/modificationPassword");
+                    header("location:./modif_mdp.php");
+                    exit();
                 }
             } else {
                 Toolbox::ajouterMessageAlerte("La combinaison login / ancien password ne correspond pas", Toolbox::COULEUR_ROUGE);
-                header("Location: " . URL . "compte/modificationPassword");
+                header("location:./modif_mdp.php");
+                exit();
             }
         } else {
             Toolbox::ajouterMessageAlerte("Les passwords ne correspondent pas", Toolbox::COULEUR_ROUGE);
-            header("Location: " . URL . "compte/modificationPassword");
+            header("location:./modif_mdp.php");
+            exit();
         }
     }
 
@@ -197,7 +200,8 @@ class UtilisateurController extends MainController
             $this->deconnexion();
         } else {
             Toolbox::ajouterMessageAlerte("La suppression n'a pas été effectuée. Contactez l'administrateur", Toolbox::COULEUR_ROUGE);
-            header("Location: " . URL . "compte/profil");
+            header("Location:./profil");
+            exit();
         }
     }
 
@@ -228,16 +232,20 @@ class UtilisateurController extends MainController
         $this->genererPage($data_page);
     }
 
-    public function poster_com($id, $message)
+    public function poster_com($id_article, $id, $message)
     {
         if (!empty($message)) {
-            if ($this->utilisateurManager->ajouter_commentaire($id, $message)) {
+            if ($this->utilisateurManager->ajouter_commentaire($id_article, $id, $message)) {
                 Toolbox::ajouterMessageAlerte("le message est posté", Toolbox::COULEUR_VERTE);
-                header("Location: " . URL . "compte/page_poster_commentaire");
+                /*           header("location:./article.php");
+                exit(); */
+                header("Location: ./article.php?id=$id_article");
+                exit();
             }
         } else {
             Toolbox::ajouterMessageAlerte("Le message est vide", Toolbox::COULEUR_ROUGE);
-            header("Location: " . URL . "compte/page_poster_commentaire");
+            /*    header("location:./article.php");
+            exit(); */
         }
     }
 

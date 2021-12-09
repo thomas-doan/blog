@@ -16,12 +16,12 @@ $administrateurController = new AdministrateurController();
 
 
 
-<header class="c_header">
+<header class="c_header_login">
 
     <img id="img_background_header" src="./public/image/mer.jpg" alt="background home" />
     <nav class="c_nav">
         <ul>
-
+            <li><a href="../blog/index.php">Notre histoire</a></li>
 
             <li><a href="contact.asp">Articles</a></li>
             <?php if (!Securite::estConnecte()) : ?>
@@ -43,7 +43,7 @@ $administrateurController = new AdministrateurController();
             <?php endif; ?>
             <?php if (Securite::estConnecte() && Securite::estAdministrateur()) : ?>
                 <li>
-                    <a>
+                    <a href="#">
                         Administration
                     </a>
                     <ul>
@@ -55,10 +55,5 @@ $administrateurController = new AdministrateurController();
 
 
     </nav>
-    <div class="titre_blog">
-        <p id="name">ZEPHYR <span>BLOG</span> </p>
-        <a href="../blog/index.php">
-            <p>Notre histoire</p>
-        </a>
-    </div>
+
 </header>

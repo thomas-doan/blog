@@ -21,14 +21,23 @@
     font-size: clamp(1rem, 2.5vw, 2.5rem);
 }
 
+.c_header .titre_blog a {
+    text-decoration: none;
+    letter-spacing: .5rem;
+    font-size: clamp(0.5rem, 2.5vw, 1rem);
+    color: black;
+}
+
 .c_header .titre_blog #name span {
     color: rgb(166, 181, 181);
 }
 
 .c_header #img_background_header {
-    max-width: 100%;
-    height: 100%;
+    max-width: 100vw;
+    height: 100vh;
     position: absolute;
+    top: 0;
+    left: 0;
     z-index: -1;
 }
 
@@ -63,19 +72,60 @@
 
 /* --------------------******DEBUT HEADER LOGIN ********------------------- */
 
-.header_login .c_nav {
+.container_diff {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20vh min-content min-content min-content;
+    grid-template-areas: "header header header header" "main main main main" "main main main main" "footer footer footer footer";
+}
+
+.c_header_login {
+    grid-area: header;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-areas: "nav";
+}
+
+.c_header_login .titre_blog {
+    grid-area: titre_blog;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.c_header_login .titre_blog #name {
+    letter-spacing: .75rem;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.c_header_login .titre_blog #name span {
+    color: rgb(166, 181, 181);
+}
+
+.c_header_login #img_background_header {
+    width: 100vw;
+    max-width: 100vw;
+    height: 20vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.container_diff .c_header_login .c_nav {
     grid-area: nav;
     margin: 1rem;
     width: 90vw;
 }
 
-.header_login .c_nav ul {
+.container_diff .c_header_login .c_nav ul {
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
 }
 
-.header_login .c_nav ul a {
+.container_diff .c_header_login .c_nav ul a {
     color: rgb(16, 1, 1);
     font-weight: bold;
     text-decoration: none;
@@ -83,7 +133,7 @@
     font-size: clamp(0.1rem, 2.5vw, 1rem);
 }
 
-.header_login .c_nav ul a:hover {
+.container_diff .c_header_login .c_nav ul a:hover {
     border-bottom: solid;
     border-width: 1px;
 }

@@ -20,6 +20,12 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
         $utilisateurController->validation_login($login, $password);
     }
 }
+
+if (isset($_SESSION['profil']['id'])) {
+    header('Location:index.php');
+}
+
+
 ?>
 
 
@@ -43,47 +49,52 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
 ?>
 
 <body>
-
-    <header class="header_login">
-
-        <?php require_once('./view/header.php'); ?>
-
-    </header>
+    <div class="general-main">
 
 
-    <div class="login">
-        <form method="POST" action="login.php">
+        <div class="container_diff">
 
-            <h4>Se connecter</h4>
-            <div class="social-media">
-                <p><i class="fab fa-google"></i></p>
-                <p><i class="fab fa-youtube"></i></p>
-                <p><i class="fab fa-facebook-f"></i></p>
-                <p><i class="fab fa-twitter"></i></p>
+            <?php require_once('./view/header_spe.php'); ?>
+
+
+
+
+            <div class="login">
+                <form method="POST" action="login.php">
+
+                    <h4>Se connecter</h4>
+                    <div class="social-media">
+                        <p><i class="fab fa-google"></i></p>
+                        <p><i class="fab fa-youtube"></i></p>
+                        <p><i class="fab fa-facebook-f"></i></p>
+                        <p><i class="fab fa-twitter"></i></p>
+                    </div>
+
+                    <p class="choose-email">ou utiliser mon login :</p>
+
+                    <div class="inputs">
+                        <label for="login">Login</label>
+                        <input type="text" id="login" name="login" required>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+
+
+                    <div align="center">
+                        <button type="submit">Connexion</button>
+                    </div>
+
+                    <?php require_once('./view/gestion_erreur.php'); ?>
+
+                </form>
             </div>
 
-            <p class="choose-email">ou utiliser mon login :</p>
-
-            <div class="inputs">
-                <label for="login">Login</label>
-                <input type="text" id="login" name="login" required>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+            </main>
+            <?php require_once('./view/footer.php'); ?>
 
 
-            <div align="center">
-                <button type="submit">Connexion</button>
-            </div>
-
-            <?php require_once('./view/gestion_erreur.php'); ?>
-
-        </form>
+        </div>
     </div>
-
-    <?php require_once('./view/footer.php'); ?>
-
-
 
 </body>
 

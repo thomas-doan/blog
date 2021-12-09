@@ -20,14 +20,7 @@ class AdministrateurController extends MainController
     {
         $utilisateurs = $this->administrateurManager->getUtilisateurs();
 
-        $data_page = [
-            "page_description" => "Gestion des droits",
-            "page_title" => "Gestion des droits",
-            "utilisateurs" => $utilisateurs,
-            "view" => "views/Administrateur/droits.view.php",
-            "template" => "views/common/template.php"
-        ];
-        $this->genererPage($data_page);
+        return $utilisateurs;
     }
 
     public function coms()
@@ -46,37 +39,24 @@ class AdministrateurController extends MainController
 
 
 
-    public function validation_modificationAdminLogin($login, $newLogin)
+    public function validation_modificationAdminLogin($id, $login)
     {
 
 
-        if ($this->administrateurManager->verifLoginDisponible($newLogin) && !isset($newLogin)) {
-            if ($this->administrateurManager->bdModificationAdminLoginUser($login, $newLogin)) {
+        if ($this->administrateurManager->verifLoginDisponible($login)) {
+            if ($this->administrateurManager->bdModificationAdminLoginUser($id, $login)) {
 
-                /*             $utilisateur = $this->administrateurManager->getUserAdminInformation($newLogin);
-                $_SESSION['profil']["login"] = $utilisateur['login'];
-
-                $_SESSION['profil']["role"] = $utilisateur['role']; */
-
-                $utilisateurs = $this->administrateurManager->getUtilisateurs();
-                $data_page = [
-                    "page_description" => "Gestion des droits",
-                    "page_title" => "Gestion des droits",
-                    "utilisateurs" => $utilisateurs,
-                    "view" => "views/Administrateur/droits.view.php",
-                    "template" => "views/common/template.php"
-                ];
-                $this->genererPage($data_page);
-
-                /*                 Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
- */
+                Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+            } else {
+                Toolbox::ajouterMessageAlerte("test", Toolbox::COULEUR_ROUGE);
             }
         } else {
             Toolbox::ajouterMessageAlerte("login déjà utilisé ou vide", Toolbox::COULEUR_ROUGE);
         }
 
 
-        header("Location: " . URL . "administration/droits");
+        header("Location: administration_user.php");
+        exit();
     }
 
     public function validation_modificationAdminCom($comId, $modifCom)
@@ -88,7 +68,8 @@ class AdministrateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: " . URL . "administration/coms");
+        header("Location: administration_user.php");
+        exit();
     }
 
     public function validation_modificationSupprAdminCom($SupprComId)
@@ -98,7 +79,8 @@ class AdministrateurController extends MainController
 
             Toolbox::ajouterMessageAlerte("La suppression est effectuée", Toolbox::COULEUR_VERTE);
         }
-        header("Location: " . URL . "administration/coms");
+        header("Location: administration_user.php");
+        exit();
     }
 
 
@@ -111,7 +93,8 @@ class AdministrateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: " . URL . "administration/droits");
+        header("Location: administration_user.php");
+        exit();
     }
 
     public function validation_modificationAdminNom($login, $nom)
@@ -123,7 +106,8 @@ class AdministrateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: " . URL . "administration/droits");
+        header("Location: administration_user.php");
+        exit();
     }
 
     public function validation_modificationAdminMail($login, $mail)
@@ -135,7 +119,8 @@ class AdministrateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: " . URL . "administration/droits");
+        header("Location: administration_user.php");
+        exit();
     }
 
 
@@ -146,7 +131,8 @@ class AdministrateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("La modification n'a pas été prise en compte", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: " . URL . "administration/droits");
+        header("Location: administration_user.php");
+        exit();
     }
 
     public function pageErreur($msg)

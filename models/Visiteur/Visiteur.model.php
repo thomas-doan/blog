@@ -14,6 +14,28 @@ class VisiteurManager extends MainManager
         return $datas;
     }
 
+
+    public function get_commentaire_id($id)
+    {
+
+
+        $req = "SELECT commentaires.id, commentaires.commentaire, commentaires.id_article, commentaires.id_utilisateur, commentaires.date, utilisateurs.login 
+        FROM commentaires 
+        INNER JOIN articles ON articles.id = commentaires.id_article 
+        INNER JOIN utilisateurs ON utilisateurs.id = articles.id_utilisateur
+        WHERE articles.id = :article_id ORDER BY date DESC;";
+
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":article_id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat_article = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat_article;
+    }
+
+
+
+
     public function getLikes()
     {
         $req = $this->getBdd()->prepare("SELECT fk_id_commentaires, COUNT(fk_id_commentaires) as nbr_likes from Intermediaire_like  WHERE fk_id_commentaires IN (
@@ -49,5 +71,27 @@ SELECT id FROM commentaires) GROUP BY fk_id_commentaires");
         $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return count($resultat);
+    }
+
+    public function get3articles()
+    {
+        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.description, articles.id_utilisateur, articles.id_categorie, categories.image FROM articles INNER JOIN categories ON articles.id_categorie = categories.id ORDER BY date DESC LIMIT 0,3;");
+        $req->execute();
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+        return $datas;
+    }
+
+
+    public function get_article($id)
+    {
+        $req = "SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id WHERE (articles.id =:article_id)";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":article_id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat_article = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat_article;
     }
 }

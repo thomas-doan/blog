@@ -25,23 +25,22 @@ class VisiteurController extends MainController
         $this->genererPage($data_page);
     }
 
-    public function livreOr()
+    public function recup_commentaires($id_article)
     {
-        $datas = $this->visiteurManager->getCommentaire();
-        /* $check = $this->visiteurManager->check_like($fk_id_com, $_SESSION['profil']['id']); */
-        $datas_de_likes = $this->visiteurManager->getLikes();
-        $check_likes = $this->visiteurManager->check_like();
-        $data_page = [
-            "page_description" => "Livre d'or",
-            "page_title" => "Livre d'or",
-            "res_like" => $datas_de_likes,
-            "total_commentaires" => $datas,
-            "check_likes" => $check_likes,
-            "page_css" => ["main_home.css", "livreOr.css"],
-            "view" => "views/Visiteur/livreOr.view.php",
-            "template" => "views/common/template.php"
-        ];
-        $this->genererPage($data_page);
+        $datas = $this->visiteurManager->get_commentaire_id($id_article);
+        /*         $datas_de_likes = $this->visiteurManager->getLikes();
+        $check_likes = $this->visiteurManager->check_like(); */
+
+        return $datas;
+    }
+
+    public function get_commentaire($id_article)
+    {
+        $datas = $this->visiteurManager->get_commentaire_id($id_article);
+        /*         $datas_de_likes = $this->visiteurManager->getLikes();
+        $check_likes = $this->visiteurManager->check_like(); */
+
+        return $datas;
     }
 
     /*     public function get_like()
@@ -80,6 +79,22 @@ class VisiteurController extends MainController
         ];
         $this->genererPage($data_page);
     }
+
+
+    public function troisArticlesRecents()
+    {
+        $troisArticles = $this->visiteurManager->get3Articles();
+        return $troisArticles;
+    }
+
+
+    public function getArticlebyId($id)
+    {
+        $article_id = $this->visiteurManager->get_article($id);
+
+        return $article_id;
+    }
+
 
     public function pageErreur($msg)
     {

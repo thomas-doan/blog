@@ -180,10 +180,11 @@ class UtilisateurManager extends MainManager
         return $resultat['image'];
     }
 
-    public function ajouter_commentaire($id, $message)
+    public function ajouter_commentaire($id_article, $id, $message)
     {
-        $req = "INSERT INTO commentaires ( commentaire, id_utilisateur, date) VALUES (:commentaire, :id_utilisateur, CURRENT_TIMESTAMP)";
+        $req = "INSERT INTO commentaires ( commentaire, id_article, id_utilisateur, date) VALUES (:commentaire, :id_article, :id_utilisateur, CURRENT_TIMESTAMP)";
         $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":id_article", $id_article, PDO::PARAM_STR);
         $stmt->bindValue(":id_utilisateur", $id, PDO::PARAM_STR);
         $stmt->bindValue(":commentaire", $message, PDO::PARAM_STR);
         $stmt->execute();
