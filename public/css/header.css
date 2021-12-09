@@ -5,7 +5,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "nav nav nav" "titre_blog .     ." ". . .";
+    grid-template-areas: "nav nav nav" "titre_blog . ." ". . .";
 }
 
 .c_header .titre_blog {
@@ -18,13 +18,12 @@
 
 .c_header .titre_blog #name {
     letter-spacing: .75rem;
-    font-size: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 .c_header .titre_blog a {
     text-decoration: none;
     letter-spacing: .5rem;
-    font-size: clamp(0.5rem, 2.5vw, 1rem);
+    font-size: 1rem;
     color: black;
 }
 
@@ -47,10 +46,20 @@
     width: 90vw;
 }
 
+
+/* -----------------=====************=========---------------- */
+
+
+/* ////////////////////////////MENU DEROULANT///////////// */
+
+
+/* -----------------=====************=========---------------- */
+
 .container .c_header .c_nav ul {
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
+    position: relative;
 }
 
 .container .c_header .c_nav ul a {
@@ -58,12 +67,90 @@
     font-weight: bold;
     text-decoration: none;
     letter-spacing: 0.2rem;
-    font-size: clamp(0.1rem, 2.5vw, 1rem);
+    /*  font-size: clamp(0.1rem, 2.5vw, 1rem); */
+}
+
+.container .c_header .c_nav ul .icon {
+    font-size: 1rem;
+}
+
+.container .c_header .c_nav button {
+    color: rgb(16, 1, 1);
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.2rem;
+    /*    font-size: clamp(0.1rem, 2.5vw, 1rem); */
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.container .c_header .c_nav button:hover {
+    border-bottom: solid;
+    border-width: 1px;
 }
 
 .container .c_header .c_nav ul a:hover {
     border-bottom: solid;
     border-width: 1px;
+}
+
+.container .c_header .c_nav .deroulant .content {
+    display: flex;
+    display: none;
+}
+
+.container .c_header .c_nav .deroulant:hover .content {
+    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav .icon {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    ul>*,
+    ul button {
+        display: none;
+    }
+    .nav .icon {
+        display: block;
+        position: absolute;
+        right: 3%;
+    }
+    ul.responsive>*,
+    ul.responsive button {
+        display: block;
+    }
+    .container .c_header .c_nav .nav {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: flex-start;
+    }
+    .c_nav ul a {
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+    .c_header #img_background_header {
+        max-width: 100vw;
+        height: 55vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    .c_header_login .c_nav ul {
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        align-items: flex-start;
+    }
 }
 
 
@@ -86,23 +173,6 @@
     grid-template-areas: "nav";
 }
 
-.c_header_login .titre_blog {
-    grid-area: titre_blog;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.c_header_login .titre_blog #name {
-    letter-spacing: .75rem;
-    font-size: clamp(1rem, 2.5vw, 2.5rem);
-}
-
-.c_header_login .titre_blog #name span {
-    color: rgb(166, 181, 181);
-}
-
 .c_header_login #img_background_header {
     width: 100vw;
     max-width: 100vw;
@@ -119,10 +189,20 @@
     width: 90vw;
 }
 
+
+/* -----------------=====************=========---------------- */
+
+
+/* ////////////////////////////MENU DEROULANT///////////// */
+
+
+/* -----------------=====************=========---------------- */
+
 .container_diff .c_header_login .c_nav ul {
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
+    position: relative;
 }
 
 .container_diff .c_header_login .c_nav ul a {
@@ -130,10 +210,94 @@
     font-weight: bold;
     text-decoration: none;
     letter-spacing: 0.2rem;
-    font-size: clamp(0.1rem, 2.5vw, 1rem);
+    /*  font-size: clamp(0.1rem, 2.5vw, 1rem); */
+}
+
+.container_diff .c_header_login .c_nav ul .icon {
+    font-size: 1rem;
+}
+
+.container_diff .c_header_login .c_nav button {
+    color: rgb(16, 1, 1);
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.2rem;
+    /*    font-size: clamp(0.1rem, 2.5vw, 1rem); */
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.container_diff .c_header_login .c_nav button:hover {
+    border-bottom: solid;
+    border-width: 1px;
 }
 
 .container_diff .c_header_login .c_nav ul a:hover {
     border-bottom: solid;
     border-width: 1px;
+}
+
+.container_diff .c_header_login .c_nav .deroulant .content {
+    display: flex;
+    display: none;
+}
+
+.container_diff .c_header_login .c_nav .deroulant:hover .content {
+    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav_spe .icon {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .navbar_spe>*,
+    .navbar_spe button {
+        display: none;
+    }
+    .c_header_login .nav_spe .icon {
+        display: block;
+        position: absolute;
+        right: 3%;
+    }
+    ul.responsive {
+        margin: 0;
+        padding: 0;
+    }
+    ul.responsive>*,
+    ul.responsive button {
+        display: block;
+    }
+    .c_header_login .c_nav ul {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        align-items: flex-start;
+    }
+    .container_diff .c_header_login .c_nav ul a {
+        color: rgb(15, 15, 15);
+        text-decoration: none;
+        /*  font-size: clamp(0.1rem, 2.5vw, 1rem); */
+    }
+    .container_diff .c_header_login .c_nav .deroulant:hover .content {
+        display: block;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(238, 233, 233, 0.919);
+        height: min-content;
+    }
+    /*     .c_header_login #img_background_header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    } */
+    .container_diff .c_header_login .c_nav {
+        grid-area: nav;
+        width: 90vw;
+    }
 }

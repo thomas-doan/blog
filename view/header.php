@@ -20,10 +20,10 @@ $administrateurController = new AdministrateurController();
 
     <img id="img_background_header" src="./public/image/mer.jpg" alt="background home" />
     <nav class="c_nav">
-        <ul>
+        <ul id="navbar" class="nav">
 
 
-            <li><a href="contact.asp">Articles</a></li>
+            <li><a href="../blog/articles.php">Articles</a></li>
             <?php if (!Securite::estConnecte()) : ?>
                 <li>
                     <a href="../blog/login.php">Se connecter</a>
@@ -42,17 +42,32 @@ $administrateurController = new AdministrateurController();
                 </form>
             <?php endif; ?>
             <?php if (Securite::estConnecte() && Securite::estAdministrateur()) : ?>
-                <li>
-                    <a>
+                <div class="deroulant">
+                    <button>
                         Administration
-                    </a>
-                    <ul>
-                        <li><a href="../blog/administration_user.php">Gérer les droits</a></li>
-                    </ul>
-                </li>
-            <?php endif; ?>
-        </ul>
+                    </button>
+                    <div class="content">
+                        <a href="../blog/administration_user.php">Gérer les droits</a>
+                        <a href="../blog/administration_user.php">Gérer les commentaires</a>
+                        <a href="../blog/administration_user.php">Gérer les articles</a>
+                    </div>
 
+                </div>
+            <?php endif; ?>
+
+            <a class="icon" onclick="myFunction()">&#9776;</a>
+
+        </ul>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("navbar");
+                if (x.className === "nav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "nav";
+                }
+            }
+        </script>
 
     </nav>
     <div class="titre_blog">

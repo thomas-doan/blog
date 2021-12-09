@@ -93,10 +93,16 @@ $get3Articles =  $visiteurController->troisArticlesRecents();
 
                     <div class="container_sct">
                         <a href="./article.php?id=<?= $article['id'] ?>">
-                            <div class='banner-img'>
+                            <div style="         position: absolute;
+                background-image: url('<?= $article['image'] ?>');
+                height: 10rem;
+                width: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;">
                             </div>
                             <img src='<?= $article['image'] ?>' alt='profile image' class="profile-img">
-                            <p class="name"><?= $article['titre'] ?></p>
+                            <p class="titre"><?= $article['titre'] ?></p>
                             <p class="description"><?= $article['description'] ?></p>
                             <a href="./article.php?id=<?= $article['id'] ?>">Lire la suite</a>
                         </a>

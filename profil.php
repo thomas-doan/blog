@@ -88,7 +88,7 @@ if (!empty($_POST['id'])) {
                     <div id="modificationLogin" class="">
                         <form method="POST" action="profil.php">
                             <div class="row">
-                                <label for="login" class="col-1 col-form-label">Modif</label>
+
                                 <div class="col-8">
                                     <input type="text" class="form-control" name="login" value="<?= $utilisateur['login'] ?>" required />
                                 </div>
@@ -112,7 +112,7 @@ if (!empty($_POST['id'])) {
                     <div id="modificationMail" class="">
                         <form method="POST" action="profil.php">
                             <div class="row">
-                                <label for="mail" class="col-1 col-form-label">Modif</label>
+
                                 <div class="col-8">
                                     <input type="mail" class="form-control" name="mail" value="<?= $utilisateur['mail'] ?>" required />
                                 </div>
@@ -136,7 +136,7 @@ if (!empty($_POST['id'])) {
                     <div id="modificationPrenom" class="">
                         <form method="POST" action="profil.php">
                             <div class="row">
-                                <label for="prenom" class="col-1 col-form-label">Modif</label>
+
                                 <div class="col-8">
                                     <input type="text" class="form-control" name="prenom" value="<?= $utilisateur['prenom'] ?>" required />
                                 </div>
@@ -163,7 +163,7 @@ if (!empty($_POST['id'])) {
                     <div id="modificationNom" class="">
                         <form method="POST" action="profil.php">
                             <div class="row">
-                                <label for="nom" class="col-1 col-form-label">Modif</label>
+
                                 <div class="col-8">
                                     <input type="text" class="form-control" name="nom" value="<?= $utilisateur['nom'] ?>" required />
                                 </div>
@@ -196,10 +196,10 @@ if (!empty($_POST['id'])) {
                     </div>
 
                 </div>
-
+                <?php require_once('./view/gestion_erreur.php'); ?>
 
             </div>
-            <?php require_once('./view/gestion_erreur.php'); ?>
+
 
 
             <?php require_once('./view/footer.php'); ?>

@@ -20,10 +20,10 @@ $administrateurController = new AdministrateurController();
 
     <img id="img_background_header" src="./public/image/mer.jpg" alt="background home" />
     <nav class="c_nav">
-        <ul>
-            <li><a href="../blog/index.php">Notre histoire</a></li>
+        <ul id="navbar_spe" class="nav_spe">
 
-            <li><a href="contact.asp">Articles</a></li>
+            <li><a href="../blog/index.php">Notre histoire</a></li>
+            <li><a href="../blog/articles.php">Articles</a></li>
             <?php if (!Securite::estConnecte()) : ?>
                 <li>
                     <a href="../blog/login.php">Se connecter</a>
@@ -42,18 +42,38 @@ $administrateurController = new AdministrateurController();
                 </form>
             <?php endif; ?>
             <?php if (Securite::estConnecte() && Securite::estAdministrateur()) : ?>
-                <li>
-                    <a href="#">
+                <div class="deroulant">
+                    <button>
                         Administration
-                    </a>
-                    <ul>
-                        <li><a href="../blog/administration_user.php">Gérer les droits</a></li>
-                    </ul>
-                </li>
-            <?php endif; ?>
-        </ul>
+                    </button>
+                    <div class="content">
+                        <a href="../blog/administration_user.php">Gérer les droits</a>
+                        <a href="../blog/administration_user.php">Gérer les commentaires</a>
+                        <a href="../blog/administration_user.php">Gérer les articles</a>
+                    </div>
 
+                </div>
+            <?php endif; ?>
+
+            <a class="icon" onclick="myFunction()">&#9776;</a>
+
+        </ul>
+        <script>
+            function myFunction() {
+                var x = document.getElementById("navbar_spe");
+                if (x.className === "nav_spe") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "nav_spe";
+                }
+            }
+        </script>
 
     </nav>
+
+
+
+
+
 
 </header>

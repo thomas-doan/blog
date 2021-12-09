@@ -87,6 +87,12 @@ class VisiteurController extends MainController
         return $troisArticles;
     }
 
+    public function tousLesArticles()
+    {
+        $articles = $this->visiteurManager->getArticles();
+        return $articles;
+    }
+
 
     public function getArticlebyId($id)
     {

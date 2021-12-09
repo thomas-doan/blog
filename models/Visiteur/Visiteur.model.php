@@ -94,4 +94,15 @@ SELECT id FROM commentaires) GROUP BY fk_id_commentaires");
         $stmt->closeCursor();
         return $resultat_article;
     }
+
+    public function getArticles()
+    {
+        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id ORDER BY date DESC;");
+        $req->execute();
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+
+        return $datas;
+    }
 }
