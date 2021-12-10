@@ -45,9 +45,7 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
 }
 
 
-if (!isset($_GET['categorie']) && empty($_GET['categorie']) && isset($_GET['page']) && !empty($_GET['page'])) {
-    header('Location: articles.php');
-}
+
 
 
 ?>

@@ -9,6 +9,7 @@ require_once("./controllers/Administrateur/Administrateur.controller.php");
 $visiteurController = new VisiteurController();
 $utilisateurController = new UtilisateurController();
 $administrateurController = new AdministrateurController();
+$getCategories =  $visiteurController->get_categories();
 ?>
 
 
@@ -23,7 +24,20 @@ $administrateurController = new AdministrateurController();
         <ul id="navbar_spe" class="nav_spe">
 
             <li><a href="../blog/index.php">Zephyr Blog</a></li>
-            <li><a href="../blog/articles.php">Articles</a></li>
+            <div class="deroulant">
+                <button>
+                    Articles
+                </button>
+                <div class="content">
+
+                    <?php foreach ($getCategories as $nomCategories) { ?>
+                        <a href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>"><?= $nomCategories['nom'] ?></a>
+                    <?php } ?>
+                    <li><a href="../blog/articles.php">Tous les articles</a></li>
+                </div>
+
+            </div>
+
             <?php if (!Securite::estConnecte()) : ?>
                 <li>
                     <a href="../blog/login.php">Se connecter</a>
