@@ -12,6 +12,7 @@ $utilisateurController = new UtilisateurController();
 
 $get3Articles =  $visiteurController->troisArticlesRecents();
 
+
 /* var_dump($get3Articles); */
 ?>
 

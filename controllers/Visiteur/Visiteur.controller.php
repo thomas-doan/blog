@@ -87,9 +87,9 @@ class VisiteurController extends MainController
         return $troisArticles;
     }
 
-    public function tousLesArticles()
+    public function tousLesArticles($premier, $parPage)
     {
-        $articles = $this->visiteurManager->getArticles();
+        $articles = $this->visiteurManager->getArticles($premier, $parPage);
         return $articles;
     }
 
@@ -105,5 +105,12 @@ class VisiteurController extends MainController
     public function pageErreur($msg)
     {
         parent::pageErreur($msg);
+    }
+
+
+    public function nbArticles()
+    {
+        $nbrTotal = $this->visiteurManager->getNbrArticles();
+        return $nbrTotal;
     }
 }

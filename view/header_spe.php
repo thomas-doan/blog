@@ -22,7 +22,7 @@ $administrateurController = new AdministrateurController();
     <nav class="c_nav">
         <ul id="navbar_spe" class="nav_spe">
 
-            <li><a href="../blog/index.php">Notre histoire</a></li>
+            <li><a href="../blog/index.php">Zephyr Blog</a></li>
             <li><a href="../blog/articles.php">Articles</a></li>
             <?php if (!Securite::estConnecte()) : ?>
                 <li>
@@ -55,11 +55,11 @@ $administrateurController = new AdministrateurController();
                 </div>
             <?php endif; ?>
 
-            <a class="icon" onclick="myFunction()">&#9776;</a>
+            <a class="icon_spe" onclick="myFunction_spe()">&#9776;</a>
 
         </ul>
         <script>
-            function myFunction() {
+            function myFunction_spe() {
                 var x = document.getElementById("navbar_spe");
                 if (x.className === "nav_spe") {
                     x.className += " responsive";

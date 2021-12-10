@@ -112,8 +112,8 @@
 }
 
 @media (max-width: 900px) {
-    ul>*,
-    ul button {
+    .nav>*,
+    .nav button {
         display: none;
     }
     .nav .icon {
@@ -213,7 +213,7 @@
     /*  font-size: clamp(0.1rem, 2.5vw, 1rem); */
 }
 
-.container_diff .c_header_login .c_nav ul .icon {
+.container_diff .c_header_login .c_nav ul .icon_spe {
     font-size: 1rem;
 }
 
@@ -250,16 +250,16 @@
     flex-direction: column;
 }
 
-.nav_spe .icon {
+.nav_spe .icon_spe {
     display: none;
 }
 
 @media (max-width: 900px) {
-    .navbar_spe>*,
-    .navbar_spe button {
+    .nav_spe>*,
+    .nav_spe button {
         display: none;
     }
-    .c_header_login .nav_spe .icon {
+    .nav_spe .icon_spe {
         display: block;
         position: absolute;
         right: 3%;

@@ -95,14 +95,28 @@ SELECT id FROM commentaires) GROUP BY fk_id_commentaires");
         return $resultat_article;
     }
 
-    public function getArticles()
+    public function getArticles($premier, $parPage)
     {
-        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id ORDER BY date DESC;");
+        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id 
+        ORDER BY date DESC LIMIT :premier, :parpage");
+        /* $stmt = $this->getBdd()->prepare($req); */
+        $req->bindValue(":premier", $premier, PDO::PARAM_INT);
+        $req->bindValue(":parpage", $parPage, PDO::PARAM_INT);
         $req->execute();
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
 
 
+        return $datas;
+    }
+
+    public function getNbrArticles()
+    {
+        $req = $this->getBdd()->prepare(" SELECT COUNT(*) AS nb_articles FROM articles");
+
+        $req->execute();
+        $datas = $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
         return $datas;
     }
 }

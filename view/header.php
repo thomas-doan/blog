@@ -71,9 +71,12 @@ $administrateurController = new AdministrateurController();
 
     </nav>
     <div class="titre_blog">
-        <p id="name">ZEPHYR <span>BLOG</span> </p>
         <a href="../blog/index.php">
+            <p id="name">ZEPHYR <span>BLOG</span> </p>
+        </a>
+        <a>
             <p>Notre histoire</p>
         </a>
+
     </div>
 </header>

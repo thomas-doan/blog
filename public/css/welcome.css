@@ -21,6 +21,10 @@
                         grid-template-rows: 55vh min-content min-content min-content;
                         grid-template-areas: "header header header header" "main main main main" "main main main main" "footer footer footer footer";
                     }
+                    .nav_pagination {
+                        width: 100%;
+                        height: min-cotent;
+                    }
                 }
                 
                 .c_main {
@@ -210,5 +214,16 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
+                    justify-content: center;
+                }
+                /* ************PAGINATION********************** */
+                
+                .nav_pagination {
+                    width: 100%;
+                    height: min-cotent;
+                }
+                
+                .nav_pagination .pagination {
+                    display: flex;
                     justify-content: center;
                 }
