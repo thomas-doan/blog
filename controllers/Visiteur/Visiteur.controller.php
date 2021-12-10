@@ -101,6 +101,13 @@ class VisiteurController extends MainController
         return $article_id;
     }
 
+    public function get_categories()
+    {
+        $resultat = $this->visiteurManager->get_cats();
+        return $resultat;
+    }
+
+
 
     public function pageErreur($msg)
     {

@@ -119,4 +119,15 @@ SELECT id FROM commentaires) GROUP BY fk_id_commentaires");
         $req->closeCursor();
         return $datas;
     }
+
+    public function get_cats()
+    {
+
+        $req = $this->getBdd()->prepare("SELECT categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id GROUP by categories.nom");
+        $req->execute();
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+        return $datas;;
+    }
 }

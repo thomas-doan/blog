@@ -24,6 +24,7 @@ $premier = ($currentPage * $parPage) - $parPage;
 
 
 $getArticles =  $visiteurController->tousLesArticles($premier, $parPage);
+$getCategories =  $visiteurController->get_categories();
 
 /* var_dump($get3Articles); */
 
@@ -68,45 +69,50 @@ $getArticles =  $visiteurController->tousLesArticles($premier, $parPage);
             <section class="c_section_transition">
                 <p>NOS ARTICLES</p>
             </section>
-            <div>
 
-                <ul class="menu-accordeon">
-                    <li><a href="#">Categorie</a>
-                        <ul>
-                            <li><a href="#">lien sous menu 1</a></li>
-                            <li><a href="#">lien sous menu 1</a></li>
-                            <li><a href="#">lien sous menu 1</a></li>
-                            <li><a href="#">lien sous menu 1</a></li>
-                        </ul>
-                    </li>
+            <div class="afficher_articles">
+                <div class="menu_sticky_cat">
 
-                </ul>
-            </div>
-            <section class="c_section_carte">
+                    <ul class="menu-accordeon">
+                        <li><a href="#">Categorie</a>
+                            <ul>
+                                <?php foreach ($getCategories as $nomCategories) { ?>
+                                    <li><a href="#"><?= $nomCategories['nom'] ?></a></li>
 
-                <?php foreach ($getArticles as $articles) {
-                ?>
+                                <?php } ?>
 
-                    <div class="container_sct">
-                        <a href="./article.php?id=<?= $articles['id'] ?>">
-                            <div style="position: absolute;
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <section class="c_section_carte">
+
+                    <?php foreach ($getArticles as $articles) {
+                    ?>
+
+                        <div class="container_sct">
+                            <a href="./article.php?id=<?= $articles['id'] ?>">
+                                <div style="position: absolute;
                             background-image: url('<?= $articles['image'] ?>');
                             height: 10rem;
                             width: 100%;
                             background-position: center;
                             background-repeat: no-repeat;
                             background-size: cover;">
-                            </div>
-                            <img src='<?= $articles['image'] ?>' alt='profile image' class="profile-img">
-                            <p class="name"><?= $articles['titre'] ?></p>
-                            <p class="description"><?= $articles['description'] ?></p>
-                            <a href="./article.php?id=<?= $articles['id'] ?>">Lire la suite</a>
-                        </a>
-                    </div>
+                                </div>
+                                <img src='<?= $articles['image'] ?>' alt='profile image' class="profile-img">
+                                <p class="name"><?= $articles['titre'] ?></p>
+                                <p class="description"><?= $articles['description'] ?></p>
+                                <a href="./article.php?id=<?= $articles['id'] ?>">Lire la suite</a>
+                            </a>
+                        </div>
 
-                <?php } ?>
+                    <?php } ?>
 
-            </section>
+                </section>
+            </div>
+
             <div class="nav_pagination">
                 <ul class="pagination">
                     <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
