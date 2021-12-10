@@ -13,6 +13,8 @@ $utilisateurController = new UtilisateurController();
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = (int) strip_tags($_GET['page']);
 } else {
+
+
     $currentPage = 1;
 }
 $nb = $visiteurController->nbArticles();
@@ -27,6 +29,21 @@ $getArticles =  $visiteurController->tousLesArticles($premier, $parPage);
 $getCategories =  $visiteurController->get_categories();
 
 /* var_dump($get3Articles); */
+
+if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page']) && !empty($_GET['page'])) {
+
+    $currentPage = (int) strip_tags($_GET['page']);
+    $nb = $visiteurController->nb_filtre_categorie($_GET['categorie']);
+    $nbArticles = (int) $nb['nb_articles'];
+
+    $parPage = 4;
+
+    $pages = ceil($nbArticles / $parPage);
+    $premier = ($currentPage * $parPage) - $parPage;
+    $getArticles =  $visiteurController->get_filter_categorie($_GET['categorie'], $premier, $parPage);
+    $cat = $_GET['categorie'];
+}
+
 
 
 ?>
@@ -51,20 +68,10 @@ $getCategories =  $visiteurController->get_categories();
 
 <body>
 
-
-
-
-
-
-
     <div class="container_diff">
         <?php require_once('./view/header_spe.php'); ?>
 
-
-
         <main class="c_main">
-
-
 
             <section class="c_section_transition">
                 <p>NOS ARTICLES</p>
@@ -77,10 +84,8 @@ $getCategories =  $visiteurController->get_categories();
                         <li><a href="#">Categorie</a>
                             <ul>
                                 <?php foreach ($getCategories as $nomCategories) { ?>
-                                    <li><a href="#"><?= $nomCategories['nom'] ?></a></li>
-
+                                    <li><a href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>"><?= $nomCategories['nom'] ?></a></li>
                                 <?php } ?>
-
                             </ul>
                         </li>
 
@@ -115,17 +120,31 @@ $getCategories =  $visiteurController->get_categories();
 
             <div class="nav_pagination">
                 <ul class="pagination">
-                    <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
-                        <a href="./articles.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
-                    </li>
-                    <?php for ($page = 1; $page <= $pages; $page++) : ?>
-                        <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-                            <a href="./articles.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                    <?php if (isset($_GET['categorie'])) { ?>
+                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
+                            <a href="./articles.php?page=<?= $currentPage - 1 ?>&categorie=<?= $_GET['categorie'] ?>" class="page-link">Précédente</a>
                         </li>
-                    <?php endfor ?>
-                    <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-                        <a href="./articles.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
-                    </li>
+                        <?php for ($page = 1; $page <= $pages; $page++) : ?>
+                            <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                                <a href="./articles.php?page=<?= $page ?>&categorie=<?= $_GET['categorie'] ?>" class="page-link"><?= $page ?></a>
+                            </li>
+                        <?php endfor ?>
+                        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                            <a href="./articles.php?page=<?= $currentPage + 1 ?>&categorie=<?= $_GET['categorie'] ?>" class="page-link">Suivante</a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
+                            <a href="./articles.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
+                        </li>
+                        <?php for ($page = 1; $page <= $pages; $page++) : ?>
+                            <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                                <a href="./articles.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                            </li>
+                        <?php endfor ?>
+                        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                            <a href="./articles.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
             <section class="c_section_transition">

@@ -107,6 +107,18 @@ class VisiteurController extends MainController
         return $resultat;
     }
 
+    public function get_filter_categorie($categorie, $premier1, $parPage1)
+    {
+        $res = $this->visiteurManager->get_specific_cat($categorie, $premier1, $parPage1);
+        return $res;
+    }
+
+    public function nb_filtre_categorie($nom_categorie)
+    {
+        $resultat = $this->visiteurManager->nb_filtre_cat($nom_categorie);
+        return $resultat;
+    }
+
 
 
     public function pageErreur($msg)

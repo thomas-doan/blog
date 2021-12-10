@@ -123,11 +123,39 @@ SELECT id FROM commentaires) GROUP BY fk_id_commentaires");
     public function get_cats()
     {
 
-        $req = $this->getBdd()->prepare("SELECT categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id GROUP by categories.nom");
+        $req = $this->getBdd()->prepare("SELECT categories.nom , categories.id FROM articles INNER JOIN categories ON articles.id_categorie = categories.id GROUP by categories.nom");
         $req->execute();
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
 
         return $datas;;
+    }
+
+    public function get_specific_cat($cat_spe, $premier1, $parPage1)
+    {
+
+        $req = $this->getBdd()->prepare("SELECT * FROM articles INNER JOIN categories ON categories.id = articles.id_categorie WHERE categories.nom = :nom_categorie ORDER BY date DESC LIMIT :premier, :parpage");
+        $req->bindValue(":nom_categorie", $cat_spe, PDO::PARAM_STR);
+        $req->bindValue(":premier", $premier1, PDO::PARAM_INT);
+        $req->bindValue(":parpage", $parPage1, PDO::PARAM_INT);
+        $req->execute();
+        $datas_cat = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+        return $datas_cat;
+    }
+
+    public function nb_filtre_cat($nom_categorie)
+    {
+        $req = $this->getBdd()->prepare("SELECT COUNT(articles.id_categorie) as nb_articles FROM articles 
+        INNER JOIN categories ON categories.id = articles.id_categorie 
+        WHERE categories.nom = :nom_categorie");
+
+        $req->bindValue(":nom_categorie", $nom_categorie, PDO::PARAM_STR);
+        $req->execute();
+        $resultat_article =  $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+        return $resultat_article;
     }
 }
