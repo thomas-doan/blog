@@ -23,7 +23,7 @@ $getCategories =  $visiteurController->get_categories();
     <nav class="c_nav">
         <ul id="navbar_spe" class="nav_spe">
 
-            <li><a href="../blog/index.php">Zephyr</a></li>
+            <li><a class="logo" href="../blog/index.php">Zephyr</a></li>
             <div class="menu-deroulant">
                 <li><a href="#">Articles</a>
                     <ul>
