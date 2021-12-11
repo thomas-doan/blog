@@ -24,18 +24,21 @@ $getCategories =  $visiteurController->get_categories();
         <ul id="navbar" class="nav">
 
 
-            <div class="deroulant">
-                <button>
-                    Articles
-                </button>
-                <div class="content">
-                    <?php foreach ($getCategories as $nomCategories) { ?>
-                        <a href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>"><?= $nomCategories['nom'] ?></a>
-                    <?php } ?>
-                    <li><a href="../blog/articles.php">Tous les articles</a></li>
-                </div>
 
+            <div class="menu_deroulant_index">
+                <li><a href="#">Articles</a>
+                    <ul>
+                        <?php foreach ($getCategories as $nomCategories) { ?>
+                            <li><a href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>">Cat : <?= $nomCategories['nom'] ?></a></li>
+                        <?php } ?>
+                        <li><a href="../blog/articles.php">Tous les articles</a></li>
+
+
+                    </ul>
+                </li>
             </div>
+
+
             <?php if (!Securite::estConnecte()) : ?>
                 <li>
                     <a href="../blog/login.php">Se connecter</a>

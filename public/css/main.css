@@ -23,7 +23,7 @@
                     }
                     .nav_pagination {
                         width: 100%;
-                        height: min-cotent;
+                        height: min-content;
                     }
                 }
                 
@@ -235,7 +235,6 @@
                 
                 .menu_sticky_cat {
                     padding-top: 3%;
-                    z-index: 5;
                     width: 100%;
                     display: flex;
                     justify-content: center;
@@ -247,7 +246,7 @@
                     list-style: none;
                     text-align: center;
                     width: 11.25rem;
-                    height: 120px;
+                    height: 7.5rem;
                     overflow: scroll;
                     overflow-x: hidden;
                 }
@@ -307,4 +306,10 @@
                 
                 .menu-accordeon li:hover li {
                     max-height: 15em;
+                }
+                
+                .container_profil {
+                    width: 100vw;
+                    display: flex;
+                    justify-content: center;
                 }

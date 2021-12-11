@@ -23,20 +23,20 @@ $getCategories =  $visiteurController->get_categories();
     <nav class="c_nav">
         <ul id="navbar_spe" class="nav_spe">
 
-            <li><a href="../blog/index.php">Zephyr Blog</a></li>
-            <div class="deroulant">
-                <button>
-                    Articles
-                </button>
-                <div class="content">
+            <li><a href="../blog/index.php">Zephyr</a></li>
+            <div class="menu-deroulant">
+                <li><a href="#">Articles</a>
+                    <ul>
+                        <?php foreach ($getCategories as $nomCategories) { ?>
+                            <li><a class="lien" href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>">Cat : <?= $nomCategories['nom'] ?></a></li>
+                        <?php } ?>
+                        <li><a class="lien" href="../blog/articles.php">Tous les articles</a></li>
 
-                    <?php foreach ($getCategories as $nomCategories) { ?>
-                        <a href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>"><?= $nomCategories['nom'] ?></a>
-                    <?php } ?>
-                    <li><a href="../blog/articles.php">Tous les articles</a></li>
-                </div>
 
+                    </ul>
+                </li>
             </div>
+
 
             <?php if (!Securite::estConnecte()) : ?>
                 <li>
@@ -76,7 +76,7 @@ $getCategories =  $visiteurController->get_categories();
             function myFunction_spe() {
                 var x = document.getElementById("navbar_spe");
                 if (x.className === "nav_spe") {
-                    x.className += " responsive";
+                    x.className += " responsive_spe";
                 } else {
                     x.className = "nav_spe";
                 }
