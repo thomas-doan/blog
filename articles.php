@@ -83,14 +83,19 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
                 <div class="menu_sticky_cat">
 
                     <ul class="menu-accordeon">
-                        <li><a href="#">Categorie</a>
+                        <?php if (isset($_GET['categorie'])) { ?>
+                            <li><a href="#">Categorie : <?= $_GET['categorie'] ?></a>
+                            <?php } else { ?>
+                            <li><a href="#">Categorie</a>
+                            <?php } ?>
+
                             <ul>
                                 <?php foreach ($getCategories as $nomCategories) { ?>
                                     <li><a href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>"><?= $nomCategories['nom'] ?></a></li>
                                 <?php } ?>
 
                             </ul>
-                        </li>
+                            </li>
 
                     </ul>
                 </div>

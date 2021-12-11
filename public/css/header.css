@@ -124,6 +124,7 @@
         flex-direction: column;
         height: 100%;
         align-items: flex-start;
+        justify-content: space-around;
     }
     .c_nav ul a {
         color: rgb(0, 0, 0);
@@ -156,7 +157,7 @@
 
 .container_diff {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: 30vh min-content min-content min-content;
     grid-template-areas: "header header header header" "main main main main" "main main main main" "footer footer footer footer";
 }
@@ -276,7 +277,7 @@
 .menu_deroulant_index li li {
     max-height: 0;
     overflow: hidden;
-    transition: all .5s;
+    transition: all 3s;
     border-radius: 0;
     box-shadow: none;
     border: none;
@@ -328,7 +329,7 @@
 .menu-deroulant li li {
     max-height: 0;
     overflow: hidden;
-    transition: all .5s;
+    transition: all 3s;
     border-radius: 0;
     box-shadow: none;
     border: none;
@@ -390,6 +391,7 @@
         flex-direction: column;
         height: 100%;
         align-items: flex-start;
+        justify-content: space-evenly;
     }
     .menu-deroulant {
         height: 3rem;

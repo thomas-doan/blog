@@ -129,7 +129,7 @@ if (!empty($_POST['id'])) {
 
 
                             <div id="prenom">
-                                prenom : <?= $utilisateur['prenom'] ?>
+                                Prenom : <?= $utilisateur['prenom'] ?>
                             </div>
 
 
@@ -153,7 +153,7 @@ if (!empty($_POST['id'])) {
 
 
                             <div id="nom">
-                                nom : <?= $utilisateur['nom'] ?>
+                                Nom : <?= $utilisateur['nom'] ?>
                             </div>
 
 

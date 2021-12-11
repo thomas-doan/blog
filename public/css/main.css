@@ -9,7 +9,7 @@
                 
                 .container {
                     display: grid;
-                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-columns: repeat(1, 1fr);
                     grid-template-rows: 100vh min-content min-content min-content;
                     grid-template-areas: "header header header header" "main main main main" "main main main main" "footer footer footer footer";
                 }
@@ -17,13 +17,14 @@
                 @media (max-width: 900px) {
                     .container {
                         display: grid;
-                        grid-template-columns: repeat(2, 1fr);
+                        grid-template-columns: repeat(1, 1fr);
                         grid-template-rows: 55vh min-content min-content min-content;
                         grid-template-areas: "header header header header" "main main main main" "main main main main" "footer footer footer footer";
                     }
                     .nav_pagination {
                         width: 100%;
                         height: min-content;
+                        padding-bottom: 2%;
                     }
                 }
                 
@@ -69,7 +70,7 @@
                     justify-content: center;
                     column-gap: 2rem;
                     padding-top: 1%;
-                    padding-bottom: 8%;
+                    padding-bottom: 5%;
                 }
                 
                 .c_main .c_section_carte .container_sct_original {
@@ -221,6 +222,7 @@
                 .nav_pagination {
                     width: 100%;
                     height: min-cotent;
+                    padding-bottom: 2%;
                 }
                 
                 .nav_pagination .pagination {
@@ -245,10 +247,10 @@
                     margin: 0;
                     list-style: none;
                     text-align: center;
-                    width: 11.25rem;
                     height: 7.5rem;
                     overflow: scroll;
                     overflow-x: hidden;
+                    width: clamp(min-content, 50vw, max-width);
                 }
                 
                 .menu-accordeon ul {
@@ -280,10 +282,11 @@
                 .menu-accordeon a {
                     display: block;
                     text-decoration: none;
-                    color: #fff;
-                    padding: 8px 0;
-                    font-family: verdana;
-                    font-size: 1.2em
+                    color: rgb(181, 150, 104);
+                    padding: 1rem 1rem;
+                    font-size: 1.2em;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5rem;
                 }
                 
                 .menu-accordeon ul li a,
@@ -309,6 +312,7 @@
                 }
                 
                 .container_profil {
+                    margin-top: 1%;
                     width: 100vw;
                     display: flex;
                     justify-content: center;
