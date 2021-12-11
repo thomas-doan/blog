@@ -57,16 +57,18 @@ $getCategories =  $visiteurController->get_categories();
                 </form>
             <?php endif; ?>
             <?php if (Securite::estConnecte() && Securite::estAdministrateur()) : ?>
-                <div class="deroulant">
-                    <button>
-                        Administration
-                    </button>
-                    <div class="content">
-                        <a href="../blog/administration_user.php">Gérer les droits</a>
-                        <a href="../blog/administration_user.php">Gérer les commentaires</a>
-                        <a href="../blog/administration_user.php">Gérer les articles</a>
-                    </div>
 
+                <div class="menu_deroulant_index">
+                    <li><a href="#">Administration</a>
+                        <ul>
+                            <li> <a href="../blog/administration_user.php">Gérer les droits</a></li>
+                            <li> <a href="../blog/administration_user.php">Gérer les commentaires</a></li>
+                            <li> <a href="../blog/administration_user.php">Gérer les articles</a></li>
+                            <li><a href="../blog/articles.php">Tous les articles</a></li>
+
+
+                        </ul>
+                    </li>
                 </div>
             <?php endif; ?>
 
