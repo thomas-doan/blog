@@ -22,7 +22,7 @@ class VisiteurManager extends MainManager
         $req = "SELECT commentaires.id, commentaires.commentaire, commentaires.id_article, commentaires.id_utilisateur, commentaires.date, utilisateurs.login 
         FROM commentaires 
         INNER JOIN articles ON articles.id = commentaires.id_article 
-        INNER JOIN utilisateurs ON utilisateurs.id = articles.id_utilisateur
+         INNER JOIN utilisateurs ON utilisateurs.id = commentaires.id_utilisateur
         WHERE articles.id = :article_id ORDER BY date DESC;";
 
         $stmt = $this->getBdd()->prepare($req);

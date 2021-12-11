@@ -100,6 +100,7 @@ if (isset($_POST['message'])) {
                 </div>
 
                 <div class="container_commentaire">
+
                     <?php
                     foreach ($commentaire as $com) {
                         $time = $com['date'];
@@ -117,6 +118,7 @@ if (isset($_POST['message'])) {
                                 </div>
                                 <div class="info_com">
                                     <p><?= $com['commentaire']; ?></p>
+
 
                                 </div>
 

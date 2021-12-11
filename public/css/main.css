@@ -152,7 +152,7 @@
                 }
                 
                 .c_main .c_section_transition p {
-                    letter-spacing: clamp(0.1rem, 2.5vw, .75rem);
+                    letter-spacing: clamp(0.1rem, 2.5vw, 5rem);
                     font-size: clamp(1rem, 2.5vw, 2.5rem);
                     color: rgb(181, 150, 104);
                 }
