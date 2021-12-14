@@ -20,14 +20,15 @@ if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['conf
         $password = Securite::secureHTML($_POST['password']);
         $mail = Securite::secureHTML($_POST['mail']);
         $utilisateurController->validation_creerCompte($login, $prenom, $nom, $password, $mail);
-        header("Location: ../blog/index.php");
-        exit();
+        Toolbox::ajouterMessageAlerte("L'utilisateur est créé", Toolbox::COULEUR_VERTE);
+        header("Location: ../blog/administration_user.php");
     } else {
         Toolbox::ajouterMessageAlerte("le Mdp n'est pas identique", Toolbox::COULEUR_ROUGE);
     }
 }
-
-if (Securite::estConnecte()) {
+if (!Securite::estConnecte()) {
+    header('Location:index.php');
+} elseif (Securite::estConnecte() && !Securite::estAdministrateur()) {
     header('Location:index.php');
 }
 
@@ -63,14 +64,8 @@ if (Securite::estConnecte()) {
 
 
             <div class="login">
-                <form class="form_login" method="POST" action="inscription.php">
-                    <h4>Création de compte</h4>
-                    <div class="social-media">
-                        <p><i class="fab fa-google"></i></p>
-                        <p><i class="fab fa-youtube"></i></p>
-                        <p><i class="fab fa-facebook-f"></i></p>
-                        <p><i class="fab fa-twitter"></i></p>
-                    </div>
+                <form class="form_login" method="POST" action="admin_creer_user.php">
+                    <h4>Création d'utilisateur</h4>
                     <div class="inputs">
                         <label for="login">Login</label>
                         <input type="text" id="login" name="login" required>

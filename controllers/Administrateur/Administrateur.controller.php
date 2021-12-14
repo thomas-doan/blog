@@ -25,18 +25,33 @@ class AdministrateurController extends MainController
 
     public function coms()
     {
-        $allComs = $this->administrateurManager->getCommentaire();
-
-        $data_page = [
-            "page_description" => "Gestion des coms",
-            "page_title" => "Gestion des coms",
-            "coms" => $allComs,
-            "view" => "views/Administrateur/coms.view.php",
-            "template" => "views/common/template.php"
-        ];
-        $this->genererPage($data_page);
+        $allComs = $this->administrateurManager->getCommentaires();
+        return $allComs;
     }
 
+    public function liste_articles()
+    {
+        $data = $this->administrateurManager->get_all_articles();
+        return $data;
+    }
+
+    public function admin_creer_com($id, $message, $article)
+    {
+
+
+        if (!empty($message)) {
+            if ($this->administrateurManager->creation_com($id, $message, $article)) {
+                Toolbox::ajouterMessageAlerte("le message est posté", Toolbox::COULEUR_VERTE);
+            }
+        } else {
+            Toolbox::ajouterMessageAlerte("Le message est vide", Toolbox::COULEUR_ROUGE);
+            header("Refresh:0; ./admin_creer_com.php");
+            exit();
+        }
+
+        header("Location: ./administration_com.php");
+        exit();
+    }
 
 
     public function validation_modificationAdminLogin($id, $login)
@@ -68,7 +83,7 @@ class AdministrateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: administration_user.php");
+        header("Refresh:0; ../blog/administration_com.php");
         exit();
     }
 
@@ -79,7 +94,7 @@ class AdministrateurController extends MainController
 
             Toolbox::ajouterMessageAlerte("La suppression est effectuée", Toolbox::COULEUR_VERTE);
         }
-        header("Location: administration_user.php");
+        header("Refresh:0; ../blog/administration_com.php");
         exit();
     }
 

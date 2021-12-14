@@ -12,11 +12,12 @@ if (!isset($_SESSION['profil']['id'])) {
     header('Location:index.php');
 }
 
-if (Securite::estConnecte() && Securite::estUtilisateur()) {
+if (Securite::estConnecte() && !Securite::estAdministrateur()) {
     header('Location:index.php');
 }
 
 $administrateurController = new AdministrateurController();
+$utilisateurController = new UtilisateurController();
 $utilisateurs =  $administrateurController->droits();
 
 
@@ -44,6 +45,10 @@ if (!empty($_POST['role'])) {
 if (!empty($_POST['login'])) {
     $login = Securite::secureHTML($_POST['login']);
     $administrateurController->validation_modificationAdminLogin($_POST['id'], $login);
+}
+
+if (!empty($_POST['login_sup'])) {
+    $utilisateurController->suppression_compte_panel_admin($_POST['login_sup']);
 }
 
 ?>
@@ -79,7 +84,14 @@ if (!empty($_POST['login'])) {
             <?php require_once('./view/header_spe.php'); ?>
             <div class="text-center">
 
+
                 <h1>Gestion des droits des utilisateurs</h1>
+                <a href="./admin_creer_user.php"> <button class="btn btn-success" id="btnValidModifLogin" type="submit">Créer utilisateur
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                        </svg>
+                    </button></a>
+
                 <div>
                     <table class="table">
                         <thead>
@@ -90,22 +102,26 @@ if (!empty($_POST['login'])) {
                                 <th>Email</th>
 
                                 <th>Rôle</th>
+                                <th>supprimer user</th>
+
                             </tr>
                             <?php foreach ($utilisateurs as $utilisateur) {
                                 if ($utilisateur['login'] !== $_SESSION['profil']["login"]) { ?>
+                                    <div class="text-center">
+
+                                    </div>
+
                                     <tr>
                                         <td><?= $utilisateur['login'] ?>
 
                                             <div>
                                                 <form method="POST" action="administration_user.php">
-                                                    <div class="row">
+                                                    <div class="row justify-content-center">
 
                                                         <div class="col-5">
                                                             <input type="hidden" name="id" value="<?= $utilisateur['id'] ?>" />
                                                             <input type="text" class="form-control" name="login" value="<?= $utilisateur['login'] ?>" required />
 
-                                                        </div>
-                                                        <div class="col-3">
                                                             <button class="btn btn-success" id="btnValidModifLogin" type="submit">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                                                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
@@ -121,24 +137,22 @@ if (!empty($_POST['login'])) {
 
 
                                         </td>
+
+
                                         <td><?= $utilisateur['prenom'] ?>
+
                                             <div>
                                                 <form method="POST" action="administration_user.php">
-                                                    <div class="row">
-
-                                                        <div class="col-5">
+                                                    <div class=" row d-flex justify-content-center">
+                                                        <div class="col-6">
                                                             <input type="hidden" name="login" value="<?= $utilisateur['login'] ?>" />
                                                             <input type="text" class="form-control" name="prenom" value="<?= $utilisateur['prenom'] ?>" required />
 
-                                                        </div>
-                                                        <div class="col-3">
                                                             <button class="btn btn-success" id="btnValidModifPrenom" type="submit">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                                                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
                                                                 </svg>
                                                             </button>
-
-
                                                         </div>
                                                     </div>
                                                 </form>
@@ -148,20 +162,17 @@ if (!empty($_POST['login'])) {
 
                                             <div>
                                                 <form method="POST" action="administration_user.php">
-                                                    <div class="row">
+                                                    <div class="row d-flex justify-content-center">
 
-                                                        <div class="col-5">
+                                                        <div class="col-6">
                                                             <input type="hidden" name="login" value="<?= $utilisateur['login'] ?>" />
                                                             <input type="text" class="form-control" name="nom" value="<?= $utilisateur['nom'] ?>" required />
 
-                                                        </div>
-                                                        <div class="col-3">
                                                             <button class="btn btn-success" id="btnValidModifPrenom" type="submit">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                                                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
                                                                 </svg>
                                                             </button>
-
 
                                                         </div>
                                                     </div>
@@ -174,20 +185,18 @@ if (!empty($_POST['login'])) {
 
                                             <div>
                                                 <form method="POST" action="administration_user.php">
-                                                    <div class="row">
+                                                    <div class="row d-flex justify-content-center">
 
                                                         <div class="col-8">
                                                             <input type="hidden" name="login" value="<?= $utilisateur['login'] ?>" />
                                                             <input type="text" class="form-control" name="mail" value="<?= $utilisateur['mail'] ?>" required />
 
-                                                        </div>
-                                                        <div class="col-3">
+
                                                             <button class="btn btn-success" id="btnValidModifPrenom" type="submit">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                                                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
                                                                 </svg>
                                                             </button>
-
 
                                                         </div>
                                                     </div>
@@ -214,6 +223,13 @@ if (!empty($_POST['login'])) {
                                                 </form>
                                             <?php endif; ?>
                                         </td>
+
+                                        <td>
+                                            <form method="POST" action="administration_user.php">
+                                                <input type="hidden" name="login_sup" value="<?= $utilisateur['login'] ?>" />
+                                                <button id="btnSupCompte" class="btn btn-danger">X</button>
+                                            </form>
+                                        </td>
                                     </tr>
                             <?php }
                             } ?>
@@ -226,6 +242,7 @@ if (!empty($_POST['login'])) {
 
 
         <?php require_once('./view/footer.php'); ?>
+    </div>
 </body>
 
 </html>

@@ -15,9 +15,37 @@ class AdministrateurManager extends MainManager
         return $datas;
     }
 
-    public function getCommentaire()
+    public function creation_com($id, $message, $article)
     {
-        $req = $this->getBdd()->prepare("SELECT * FROM commentaires ORDER BY date DESC");
+
+        $req = "INSERT INTO commentaires (commentaire, id_article, id_utilisateur, date)
+        VALUES (:commentaire, :id_article,:id, CURRENT_TIMESTAMP)";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":commentaire", $message, PDO::PARAM_STR);
+        $stmt->bindValue(":id_article", $article, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+    public function get_all_articles()
+    {
+        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id 
+        ORDER BY date DESC ");
+        /* $stmt = $this->getBdd()->prepare($req); */
+        $req->execute();
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+        return $datas;
+    }
+
+
+    public function getCommentaires()
+    {
+        $req = $this->getBdd()->prepare("SELECT commentaires.id,login,commentaire,date, id_utilisateur from utilisateurs INNER JOIN commentaires ON utilisateurs.id = commentaires.id_utilisateur ORDER BY date DESC");
         $req->execute();
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();

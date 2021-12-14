@@ -16,6 +16,12 @@ class Securite
     {
         return ($_SESSION['profil']['role'] === "1");
     }
+
+    public static function estModerateur()
+    {
+        return ($_SESSION['profil']['role'] === "2");
+    }
+
     public static function estAdministrateur()
     {
         return ($_SESSION['profil']['role'] === "3");

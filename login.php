@@ -60,7 +60,7 @@ if (isset($_SESSION['profil']['id'])) {
 
 
             <div class="login">
-                <form method="POST" action="login.php">
+                <form class="form_login" method="POST" action="login.php">
 
                     <h4>Se connecter</h4>
                     <div class="social-media">

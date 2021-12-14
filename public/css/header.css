@@ -399,4 +399,10 @@
     .menu_deroulant_index {
         height: 3.5rem;
     }
+    .menu-deroulant li:hover li a {
+        padding-top: 1rem;
+    }
+    .menu_deroulant_index li:hover li a {
+        padding-top: 1rem;
+    }
 }

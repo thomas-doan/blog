@@ -74,22 +74,14 @@ class UtilisateurController extends MainController
                 if ($this->utilisateurManager->bdCreerCompte($login, $prenom, $nom, $passwordCrypte, $mail, $clef, "profils/profil.png", "utilisateur")) {
 
                     Toolbox::ajouterMessageAlerte("Le compte est créé!", Toolbox::COULEUR_VERTE);
-                    header("../blog/index.php");
-                    exit();
                 } else {
                     Toolbox::ajouterMessageAlerte("Erreur lors de la création du compte, recommencez !", Toolbox::COULEUR_ROUGE);
-                    header("../blog/inscription.php");
-                    exit();
                 }
             } else {
                 Toolbox::ajouterMessageAlerte("Le login est déjà utilisé !", Toolbox::COULEUR_ROUGE);
-                header("../blog/inscription.php");
-                exit();
             }
         } else {
             Toolbox::ajouterMessageAlerte("Le login est vide!", Toolbox::COULEUR_ROUGE);
-            header("../blog/inscription.php");
-            exit();
         }
     }
 
@@ -205,7 +197,20 @@ class UtilisateurController extends MainController
         }
     }
 
-    public function page_poster_commentaire()
+    public function suppression_compte_panel_admin($login)
+    {
+
+
+        if ($this->utilisateurManager->bdSuppressionCompte($login)) {
+            Toolbox::ajouterMessageAlerte("La suppression du compte est effectuée", Toolbox::COULEUR_VERTE);
+            header("Refresh:0; ../blog/administration_user.php");
+            exit();
+        } else {
+            Toolbox::ajouterMessageAlerte("La suppression n'a pas été effectuée. Contactez l'administrateur", Toolbox::COULEUR_ROUGE);
+        }
+    }
+
+    /*     public function page_poster_commentaire()
     {
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
         $data_page = [
@@ -217,20 +222,9 @@ class UtilisateurController extends MainController
             "template" => "views/common/template.php"
         ];
         $this->genererPage($data_page);
-    }
+    } */
 
-    public function livreOrConnecte()
-    {
-        /*     $check = $this->utilisateurManager->check_like($fk_id_com, $_SESSION['profil']['id']); */
-        $check = "test";
-        $data_page = [
-            "toto" => $check,
-            "page_css" => ["main_home.css", "livreOr.css"],
-            "view" => "views/Visiteur/livreOr.view.php",
-            "template" => "views/common/template.php"
-        ];
-        $this->genererPage($data_page);
-    }
+
 
     public function poster_com($id_article, $id, $message)
     {
