@@ -29,11 +29,20 @@ class AdministrateurController extends MainController
         return $allComs;
     }
 
+
     public function liste_articles()
     {
         $data = $this->administrateurManager->get_all_articles();
         return $data;
     }
+
+    public function recup_cats()
+    {
+        $data = $this->administrateurManager->getCategories();
+        return $data;
+    }
+
+
 
     public function admin_creer_com($id, $message, $article)
     {

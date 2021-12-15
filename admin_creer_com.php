@@ -56,7 +56,9 @@ if (isset($_POST['id']) && isset($_POST['message']) && isset($_POST['article']))
             <?php require_once('./view/header_spe.php'); ?>
             <div class="container_creer_com">
 
+
                 <div class="container_com_item">
+                    <h1>Créer des commentaires</h1>
                     <div class="com">
 
                         <form method="POST" action="admin_creer_com.php">
@@ -66,10 +68,14 @@ if (isset($_POST['id']) && isset($_POST['message']) && isset($_POST['article']))
                                 <label for="user-select">Choisir utilisateur:</label>
                                 <select name="id">
 
-                                    <?php foreach ($getLogin as $login) { ?>
+                                    <?php foreach ($getLogin as $login) {
+
+
+                                    ?>
                                         <option value="<?= $login['id'] ?>"><?= $login['login'] ?></option>
 
-                                    <?php } ?>
+                                    <?php
+                                    } ?>
                                 </select>
 
 

@@ -15,6 +15,17 @@ class AdministrateurManager extends MainManager
         return $datas;
     }
 
+    public function getCategories()
+    {
+        $req = $this->getBdd()->prepare("SELECT * FROM categories");
+        $req->execute();
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+
+        return $datas;
+    }
+
     public function creation_com($id, $message, $article)
     {
 
@@ -32,8 +43,13 @@ class AdministrateurManager extends MainManager
 
     public function get_all_articles()
     {
-        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id 
-        ORDER BY date DESC ");
+        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, utilisateurs.login , articles.article, articles.id_categorie, categories.image, categories.nom
+
+FROM articles INNER JOIN categories ON articles.id_categorie = categories.id
+INNER JOIN utilisateurs ON utilisateurs.id = articles.id_utilisateur
+
+
+ORDER BY date DESC; ");
         /* $stmt = $this->getBdd()->prepare($req); */
         $req->execute();
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);

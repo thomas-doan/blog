@@ -61,7 +61,7 @@ $getCategories =  $visiteurController->get_categories();
                         <ul>
                             <li> <a href="../blog/administration_user.php">Gérer les droits</a></li>
                             <li> <a href="../blog/administration_com.php">Gérer les commentaires</a></li>
-                            <li> <a href="../blog/administration_user.php">Gérer les articles</a></li>
+                            <li> <a href="../blog/administration_article.php">Gérer les articles</a></li>
                             <li><a href="../blog/articles.php">Tous les articles</a></li>
 
 

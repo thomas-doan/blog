@@ -63,7 +63,7 @@ if (!empty($_POST['idSupprCom'])) {
             <div class="text-center">
 
 
-                <h1>Gestion des droits des commentaires</h1>
+                <h1>Gestion des commentaires</h1>
                 <a href="./admin_creer_com.php"> <button class="btn btn-success" id="btnValidModifLogin" type="submit">Créer un commentaire
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                         </svg>
@@ -73,10 +73,10 @@ if (!empty($_POST['idSupprCom'])) {
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>commentaire</th>
-                                <th>login</th>
-                                <th>supprimer</th>
+                                <th>Id</th>
+                                <th>Commentaire</th>
+                                <th>Créateur</th>
+                                <th>Supprimer</th>
 
 
 
