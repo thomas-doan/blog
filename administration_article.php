@@ -152,7 +152,7 @@ $getCategories = $administrateurController->recup_cats();
 
                                                         <div class="col-4">
                                                             <input type="hidden" name="id" value="<?= $article['id'] ?>" />
-                                                            <input type="text" class="form-control" name="commentaire" value="<?= $article['titre'] ?>" required />
+                                                            <input type="text" class="form-control" name="titre" value="<?= $article['titre'] ?>" required />
 
                                                             <button class="col-2 btn btn-success" id="btnValidModifComm" type="submit">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
@@ -178,7 +178,7 @@ $getCategories = $administrateurController->recup_cats();
 
                                                         <div class="col-4">
 
-                                                            <select name="id">
+                                                            <select name="login">
 
                                                                 <?php foreach ($getLogin as $login) {
                                                                     if ($login['id_droits'] == 3 || $login['id_droits'] == 2) {
@@ -208,7 +208,7 @@ $getCategories = $administrateurController->recup_cats();
                                         <td>
 
                                             <form method="POST" action="administration_article.php">
-                                                <input type="hidden" name="idSupprCom" value="<?= $article['id'] ?>" />
+                                                <input type="hidden" name="idSupprArt" value="<?= $article['id'] ?>" />
                                                 <button id="btnSupCompte" class="btn btn-danger">X</button>
                                             </form>
                                         </td>
