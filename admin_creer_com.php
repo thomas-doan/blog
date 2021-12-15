@@ -24,7 +24,8 @@ $getLogin = $administrateurController->droits();
 $getIdArticles = $administrateurController->liste_articles();
 
 if (isset($_POST['id']) && isset($_POST['message']) && isset($_POST['article'])) {
-    $administrateurController->admin_creer_com($_POST['id'], $_POST['message'], $_POST['article']);
+    $message = Securite::secureHTML($_POST['message']);
+    $administrateurController->admin_creer_com($_POST['id'], $message, $_POST['article']);
 }
 
 ?>

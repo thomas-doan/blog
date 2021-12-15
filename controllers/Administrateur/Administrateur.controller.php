@@ -72,7 +72,7 @@ class AdministrateurController extends MainController
 
                 Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
             } else {
-                Toolbox::ajouterMessageAlerte("test", Toolbox::COULEUR_ROUGE);
+                Toolbox::ajouterMessageAlerte("La modification n'est pas effectuée", Toolbox::COULEUR_ROUGE);
             }
         } else {
             Toolbox::ajouterMessageAlerte("login déjà utilisé ou vide", Toolbox::COULEUR_ROUGE);
@@ -82,6 +82,36 @@ class AdministrateurController extends MainController
         header("Location: administration_user.php");
         exit();
     }
+
+
+    public function validation_modificationAdminArticleLogin($id, $login)
+    {
+
+        if ($this->administrateurManager->bdModificationAdminArticleLogin($id, $login)) {
+
+            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
+        }
+        header("Location: administration_article.php");
+        exit();
+    }
+
+
+    public function validation_modificationAdminArticleCategorie($id, $categorie)
+    {
+
+        if ($this->administrateurManager->bdModificationAdminArticleCategorie($id, $categorie)) {
+
+            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
+        }
+        header("Location: administration_article.php");
+        exit();
+    }
+
+
 
     public function validation_modificationAdminCom($comId, $modifCom)
     {
@@ -104,6 +134,31 @@ class AdministrateurController extends MainController
             Toolbox::ajouterMessageAlerte("La suppression est effectuée", Toolbox::COULEUR_VERTE);
         }
         header("Refresh:0; ../blog/administration_com.php");
+        exit();
+    }
+
+    public function validation_modificationSupprAdminArt($SupprArtId)
+    {
+        if ($this->administrateurManager->bdModificationAdminSupprArticle($SupprArtId)) {
+
+            Toolbox::ajouterMessageAlerte("La suppression est effectuée", Toolbox::COULEUR_VERTE);
+        }
+        header("Refresh:0; ../blog/administration_article.php");
+        exit();
+    }
+
+
+    public function validation_modificationAdminArticleDescription($id, $description)
+    {
+        if ($this->administrateurManager->bdModificationAdminArticleDescription($id, $description)) {
+
+            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
+            header("Refresh:0; ./administration_article.php");
+            exit();
+        }
+        header("Location: administration_article.php");
         exit();
     }
 
@@ -156,6 +211,49 @@ class AdministrateurController extends MainController
             Toolbox::ajouterMessageAlerte("La modification n'a pas été prise en compte", Toolbox::COULEUR_ROUGE);
         }
         header("Location: administration_user.php");
+        exit();
+    }
+
+    public function validation_modificationAdminArticleTitre($id, $titre)
+    {
+
+        if ($this->administrateurManager->bdModificationAdminArticleTitre($id, $titre)) {
+
+            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
+            header("Refresh:0; ./administration_article.php");
+            exit();
+        }
+        header("Location: administration_article.php");
+        exit();
+    }
+
+    public function validation_modificationAdminArticleContenu($id, $message)
+    {
+        if ($this->administrateurManager->bdModificationAdminArticleContenu($id, $message)) {
+
+            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
+            header("Refresh:0; ./administration_article.php");
+            exit();
+        }
+        header("Location: administration_article.php");
+        exit();
+    }
+
+
+    public function admin_creation_categorie($files, $description)
+    {
+
+        if ($this->administrateurManager->bdCreationCategorie($files, $description)) {
+
+            Toolbox::ajouterMessageAlerte("La création de catégorie est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("La création de catégorie n'est pas effectuée", Toolbox::COULEUR_ROUGE);
+        }
+        header("Location: administration_article.php");
         exit();
     }
 

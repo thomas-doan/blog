@@ -64,7 +64,9 @@ if (!Securite::estConnecte()) {
 
 
             <div class="login">
+
                 <form class="form_login" method="POST" action="admin_creer_user.php">
+
                     <h4>Création d'utilisateur</h4>
                     <div class="inputs">
                         <label for="login">Login</label>
@@ -82,28 +84,24 @@ if (!Securite::estConnecte()) {
                     </div>
                     <div align="center">
                         <button type="submit">Créer !</button>
+
                     </div>
-                    <?php
-                    if (isset($_SESSION['alert'])) {
-                        foreach ($_SESSION['alert'] as $alert) {
-                            echo "<div class='alert " . $alert['type'] . "' role='alert'>
-                        " . $alert['message'] . "
-                    </div>";
-                        }
-                        unset($_SESSION['alert']);
-                    }
-                    ?>
+
+
                 </form>
 
                 <?php require_once('./view/gestion_erreur.php'); ?>
 
             </div>
+
         </div>
-        <?php require_once('./view/footer.php'); ?>
+
 
     </div>
-    </div>
+
+    <?php require_once('./view/footer.php'); ?>
 
 </body>
+
 
 </html>

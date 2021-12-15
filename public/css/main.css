@@ -381,3 +381,19 @@
                     border: none;
                 }
                 /*              -****************fin COMMENTAIRE************- */
+                
+                .creation_categorie_admin form {
+                    width: 100vw;
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+                
+                .creation_categorie_admin input {
+                    border: none;
+                    background-color: rgb(238, 238, 243);
+                }
+                
+                .creation_categorie_admin button {
+                    border: none;
+                    background-color: ghostwhite;
+                }

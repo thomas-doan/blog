@@ -41,6 +41,21 @@ class AdministrateurManager extends MainManager
         return $estModifier;
     }
 
+
+    public function bdCreationCategorie($file, $description)
+    {
+        $req = "INSERT INTO categories (nom, image)
+        VALUES (:nom, :image)";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":image", $file, PDO::PARAM_STR);
+        $stmt->bindValue(":nom", $description, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+
     public function get_all_articles()
     {
         $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, utilisateurs.login , articles.article, articles.id_categorie, categories.image, categories.nom
@@ -109,6 +124,17 @@ ORDER BY date DESC; ");
         return $comSuppr;
     }
 
+    public function bdModificationAdminSupprArticle($SupprArtId)
+    {
+        $req = "DELETE FROM articles WHERE id = :id ";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":id", $SupprArtId, PDO::PARAM_STR);
+        $stmt->execute();
+        $comSuppr = $stmt;
+        $stmt->closeCursor();
+        return $comSuppr;
+    }
+
 
 
     public function bdModificationAdminLoginUser($id, $login)
@@ -170,6 +196,69 @@ ORDER BY date DESC; ");
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
         $stmt->bindValue(":role", $role, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+    public function bdModificationAdminArticleTitre($id, $titre)
+    {
+        $req = "UPDATE articles set titre = :titre WHERE id = :id";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":titre", $titre, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+    public function bdModificationAdminArticleContenu($id, $message)
+    {
+        $req = "UPDATE articles set article = :article WHERE id = :id";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":article", $message, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+
+    public function bdModificationAdminArticleDescription($id, $description)
+    {
+        $req = "UPDATE articles set description = :description WHERE id = :id";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":description", $description, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+
+
+    public function bdModificationAdminArticleLogin($id, $login)
+    {
+        $req = "UPDATE articles set id_utilisateur = :login WHERE id = :id";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":login", $login, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+    public function bdModificationAdminArticleCategorie($id, $categorie)
+    {
+        $req = "UPDATE articles set id_categorie = :categorie WHERE id = :id";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":categorie", $categorie, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_STR);
         $stmt->execute();
         $estModifier = ($stmt->rowCount() > 0);
         $stmt->closeCursor();

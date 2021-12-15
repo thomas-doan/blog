@@ -22,7 +22,8 @@ $commentaires =  $administrateurController->coms();
 
 
 if (!empty($_POST['commentaire'])) {
-    $administrateurController->validation_modificationAdminCom($_POST['id'], $_POST['commentaire']);
+    $commentaire = Securite::secureHTML($_POST['commentaire']);
+    $administrateurController->validation_modificationAdminCom($_POST['id'], $commentaire);
 }
 
 if (!empty($_POST['idSupprCom'])) {
