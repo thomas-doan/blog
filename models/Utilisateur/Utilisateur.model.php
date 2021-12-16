@@ -148,7 +148,7 @@ class UtilisateurManager extends MainManager
 
     public function bdSuppressionCompte($login)
     {
-        $req = "DELETE FROM utilisateurs WHERE login = :login";
+        $req = "UPDATE  utilisateurs SET login = 'utilisateur supprimé', prenom = 'utilisateur supprimé', nom = 'utilisateur supprimé'  WHERE login = :login";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
         $stmt->execute();
@@ -193,7 +193,7 @@ class UtilisateurManager extends MainManager
         return $estModifier;
     }
 
-    public function ajouter_like($id_com, $id_user)
+    /*     public function ajouter_like($id_com, $id_user)
     {
 
         $req = "INSERT INTO Intermediaire_like (fk_id_commentaires, fk_id_utilisateurs, etat_like) VALUES (:fk_id_commentaires, :fk_id_utilisateurs, 2)";
@@ -231,5 +231,5 @@ class UtilisateurManager extends MainManager
         $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return $resultat;
-    }
+    } */
 }

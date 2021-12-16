@@ -126,6 +126,21 @@ class AdministrateurController extends MainController
         exit();
     }
 
+
+
+    public function validation_modificationNomAdminCat($catId, $modifNomCat)
+    {
+
+        if ($this->administrateurManager->bdModificationAdminCat($catId, $modifNomCat)) {
+
+            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
+        }
+        header("Refresh:0; ../blog/administration_categorie.php");
+        exit();
+    }
+
     public function validation_modificationSupprAdminCom($SupprComId)
     {
 
@@ -144,6 +159,18 @@ class AdministrateurController extends MainController
             Toolbox::ajouterMessageAlerte("La suppression est effectuée", Toolbox::COULEUR_VERTE);
         }
         header("Refresh:0; ../blog/administration_article.php");
+        exit();
+    }
+
+
+
+    public function validation_modificationSupprAdminCat($idSupprCat)
+    {
+        if ($this->administrateurManager->bdModificationAdminSupprCategorie($idSupprCat)) {
+
+            Toolbox::ajouterMessageAlerte("La suppression est effectuée", Toolbox::COULEUR_VERTE);
+        }
+        header("Refresh:0; ../blog/administration_categorie.php");
         exit();
     }
 
@@ -253,7 +280,7 @@ class AdministrateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("La création de catégorie n'est pas effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location: administration_article.php");
+        header("Location: administration_categorie.php");
         exit();
     }
 

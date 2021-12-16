@@ -158,7 +158,7 @@
 .container_diff {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 30vh min-content min-content min-content;
+    grid-template-rows: 35vh min-content min-content min-content;
     grid-template-areas: "header header header header" "main main main main" "main main main main" "footer footer footer footer";
 }
 
@@ -172,7 +172,7 @@
 .c_header_login #img_background_header {
     width: 100vw;
     max-width: 100vw;
-    height: 30vh;
+    height: 35vh;
     position: absolute;
     top: 0;
     left: 0;

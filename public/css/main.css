@@ -382,18 +382,30 @@
                 }
                 /*              -****************fin COMMENTAIRE************- */
                 
-                .creation_categorie_admin form {
+                .creation_categorie_admin {
                     width: 100vw;
                     display: flex;
-                    justify-content: space-evenly;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
                 }
                 
-                .creation_categorie_admin input {
+                .creation_categorie_admin .champ_cat_admin {
+                    width: 50vw;
+                }
+                
+                .creation_categorie_admin form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    align-content: stretch;
+                    padding: 0.5rem;
                     border: none;
-                    background-color: rgb(238, 238, 243);
                 }
                 
                 .creation_categorie_admin button {
+                    align-content: stretch;
                     border: none;
                     background-color: ghostwhite;
                 }

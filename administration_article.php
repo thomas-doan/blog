@@ -24,6 +24,7 @@ $getcatadmin = $administrateurController->recup_cats();
 
 
 
+
 if (!empty($_POST['titre'])) {
     $titre_article = Securite::secureHTML($_POST['titre']);
     $administrateurController->validation_modificationAdminArticleTitre($_POST['id'], $titre_article);
@@ -130,19 +131,7 @@ if (isset($_FILES['file'])) {
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                         </svg>
                     </button></a>
-                <div class="creation_categorie_admin">
-                    <p>Créer une categorie : </p>
-                    <form action="administration_article.php" method="POST" enctype="multipart/form-data">
-                        <input type="text" name="add_nom_categorie" value="" placeholder="nom de votre categorie" />
 
-                        <input type="file" name="file">
-
-                        <button type="submit"> Valider
-
-                        </button>
-
-                    </form>
-                </div>
 
                 </button></a>
 

@@ -58,10 +58,10 @@ class AdministrateurManager extends MainManager
 
     public function get_all_articles()
     {
-        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, utilisateurs.login , articles.article, articles.id_categorie, categories.image, categories.nom
+        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur , utilisateurs.login  , articles.article, articles.id_categorie, categories.image, categories.nom
 
 FROM articles INNER JOIN categories ON articles.id_categorie = categories.id
-INNER JOIN utilisateurs ON utilisateurs.id = articles.id_utilisateur
+ INNER JOIN utilisateurs ON utilisateurs.id = articles.id_utilisateur 
 
 
 ORDER BY date DESC; ");
@@ -136,6 +136,17 @@ ORDER BY date DESC; ");
     }
 
 
+
+    public function bdModificationAdminSupprCategorie($idSupprCat)
+    {
+        $req = "UPDATE  categories SET nom = 'categorie suppr' WHERE id = :id ";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":id", $idSupprCat, PDO::PARAM_STR);
+        $stmt->execute();
+        $comSuppr = $stmt;
+        $stmt->closeCursor();
+        return $comSuppr;
+    }
 
     public function bdModificationAdminLoginUser($id, $login)
     {
@@ -219,6 +230,21 @@ ORDER BY date DESC; ");
         $req = "UPDATE articles set article = :article WHERE id = :id";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":article", $message, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
+
+
+
+    public function bdModificationAdminCat($id, $message)
+    {
+        $req = "UPDATE categories set nom = :nom WHERE id = :id";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":nom", $message, PDO::PARAM_STR);
         $stmt->bindValue(":id", $id, PDO::PARAM_STR);
         $stmt->execute();
         $estModifier = ($stmt->rowCount() > 0);
