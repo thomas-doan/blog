@@ -320,18 +320,19 @@
                 /*              -****************CREER COMMENTAIRE************- */
                 
                 .container_creer_com {
-                    height: 80vh;
+                    height: max-content;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                 }
                 
-                .container_com_item {
+                .container_creer_com .container_com_item {
                     display: flex;
                     flex-direction: column;
                     align-content: center;
                     align-self: center;
-                    width: 30vw;
+                    width: 60vw;
+                    height: max-content;
                 }
                 
                 .container_com_item .com form {
@@ -339,19 +340,26 @@
                     flex-direction: column;
                     height: 100%;
                     background-color: rgba(247, 246, 245, 0.852);
-                    width: 30vw;
+                    width: 60vw;
                 }
                 
                 .container_com_item .com form textarea {
                     background-color: rgba(247, 246, 245, 0.852);
                     border: none;
                     height: 30vh;
-                    width: 30vw;
+                    width: 60vw;
+                    border-top: solid;
+                    border-color: rgb(216, 213, 213);
                 }
                 
                 .container_com_item .com form button {
                     border: none;
                     border-radius: 2%;
+                }
+                
+                .container_com_item h1 {
+                    text-align: center;
+                    padding: 0.5rem;
                 }
                 
                 .menu {
@@ -370,7 +378,7 @@
                         flex-direction: column; */
                 }
                 
-                .menu select {
+                . .menu select {
                     background-color: #fffefe;
                     margin-bottom: .125rem;
                     box-shadow: .1875rem .1875rem .1875rem rgb(255, 255, 255);
@@ -379,6 +387,22 @@
                 
                 .retour {
                     border: none;
+                }
+                
+                .menu_crea_article {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: rgba(247, 246, 245, 0.852);
+                    /*           height: 7.5rem;
+                        overflow: scroll;
+                        overflow-x: hidden;
+                        width: clamp(min-content, 50vw, max-width);
+                        display: flex;
+                        flex-direction: column; */
                 }
                 /*              -****************fin COMMENTAIRE************- */
                 

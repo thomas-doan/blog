@@ -62,6 +62,24 @@ class AdministrateurController extends MainController
         exit();
     }
 
+    public function admin_creer_article($id, $id_utilisateur, $message, $titre, $description)
+    {
+
+
+        if (!empty($id) && !empty($id_utilisateur) && !empty($message) && !empty($titre) && !empty($description)) {
+            if ($this->administrateurManager->creation_article($id, $id_utilisateur,  $message, $titre, $description)) {
+                Toolbox::ajouterMessageAlerte("l'article est posté", Toolbox::COULEUR_VERTE);
+            }
+        } else {
+            Toolbox::ajouterMessageAlerte("remplir tous les champs", Toolbox::COULEUR_ROUGE);
+            header("Refresh:0; ./admin_creer_article.php");
+            exit();
+        }
+
+        header("Location: ./administration_article.php");
+        exit();
+    }
+
 
     public function validation_modificationAdminLogin($id, $login)
     {

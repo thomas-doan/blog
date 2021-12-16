@@ -41,6 +41,23 @@ class AdministrateurManager extends MainManager
         return $estModifier;
     }
 
+    public function creation_article($id, $id_utilisateur, $message, $titre, $description)
+    {
+
+        $req = "INSERT INTO articles (titre, description, article, image, id_utilisateur, id_categorie, date)
+        VALUES (:titre, :description, :article, 'test', :id_utilisateur, :id_categorie, CURRENT_TIMESTAMP)";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":titre", $titre, PDO::PARAM_STR);
+        $stmt->bindValue(":description", $description, PDO::PARAM_STR);
+        $stmt->bindValue(":article", $message, PDO::PARAM_STR);
+        $stmt->bindValue(":id_utilisateur", $id_utilisateur, PDO::PARAM_STR);
+        $stmt->bindValue(":id_categorie", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+
 
     public function bdCreationCategorie($file, $description)
     {

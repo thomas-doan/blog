@@ -127,7 +127,7 @@ if (isset($_FILES['file'])) {
 
                 <?php require_once('./view/gestion_erreur.php'); ?>
                 <h1>Gestion des articles</h1>
-                <a href="./admin_creer_com.php"> <button class="btn btn-success" id="btnValidModifLogin" type="submit">Créer un article
+                <a href="./admin_creer_article.php"> <button class="btn btn-success" id="btnValidModifLogin" type="submit">Créer un article
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                         </svg>
                     </button></a>
