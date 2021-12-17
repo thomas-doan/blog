@@ -52,9 +52,9 @@ if (isset($_FILES['file']) && isset($_POST['id']) && isset($_POST['id_utilisateu
     }
 
 
-    $message = Securite::secureHTML($_POST['message']);
-    $titre = Securite::secureHTML($_POST['titre']);
-    $description = Securite::secureHTML($_POST['description']);
+    $message = ($_POST['message']);
+    $titre = ($_POST['titre']);
+    $description = ($_POST['description']);
     $administrateurController->admin_creer_article($_POST['id'], $_POST['id_utilisateur'], $nom, $message, $titre, $description);
 }
 

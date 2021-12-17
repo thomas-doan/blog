@@ -193,19 +193,7 @@ class AdministrateurController extends MainController
     }
 
 
-    public function validation_modificationAdminArticleDescription($id, $description)
-    {
-        if ($this->administrateurManager->bdModificationAdminArticleDescription($id, $description)) {
 
-            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
-        } else {
-            Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
-            header("Refresh:0; ./administration_article.php");
-            exit();
-        }
-        header("Location: administration_article.php");
-        exit();
-    }
 
 
     public function validation_modificationAdminPrenom($login, $prenom)
@@ -259,6 +247,28 @@ class AdministrateurController extends MainController
         exit();
     }
 
+    public function validation_modificationAdminArticlelayout($id, $titre, $message, $description)
+    {
+
+        if (
+            $this->administrateurManager->bdModificationAdminArticleTitre($id, $titre)
+            && $this->administrateurManager->bdModificationAdminArticleContenu($id, $message)
+            && $this->administrateurManager->bdModificationAdminArticleDescription($id, $description)
+        ) {
+
+            Toolbox::ajouterMessageAlerte("Les modifications sont effectuées", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Remplir les trois champs", Toolbox::COULEUR_ROUGE);
+            header("Refresh:0; ./administration_article_modif.php?id=$id");
+            exit();
+        }
+        header("Location: administration_article_modif.php?id=$id");
+        exit();
+    }
+
+
+
+
     public function validation_modificationAdminArticleTitre($id, $titre)
     {
 
@@ -267,10 +277,10 @@ class AdministrateurController extends MainController
             Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
-            header("Refresh:0; ./administration_article.php");
+            header("Refresh:0; ./administration_article_modif.php");
             exit();
         }
-        header("Location: administration_article.php");
+        header("Location: administration_article_modif.php?id=$id");
         exit();
     }
 
@@ -281,10 +291,24 @@ class AdministrateurController extends MainController
             Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
-            header("Refresh:0; ./administration_article.php");
+            header("Refresh:0; ./administration_article_modif.phpid=$id");
             exit();
         }
-        header("Location: administration_article.php");
+        header("Location: administration_article_modif.phpid=$id");
+        exit();
+    }
+
+    public function validation_modificationAdminArticleDescription($id, $description)
+    {
+        if ($this->administrateurManager->bdModificationAdminArticleDescription($id, $description)) {
+
+            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
+            header("Refresh:0; ./administration_article_modif.phpid=$id");
+            exit();
+        }
+        header("Location: administration_article_modif.phpid=$id");
         exit();
     }
 

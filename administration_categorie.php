@@ -131,53 +131,55 @@ if (!empty($_POST['nom'])) {
 
 
                             <?php foreach ($getcatadmin as $afficher_cat) {
+                                if ($afficher_cat['nom'] !== "categorie suppr") {
                             ?>
-                                <div class="text-center">
-                                    <tr>
+                                    <div class="text-center">
+                                        <tr>
 
 
-                                        <td><?= $afficher_cat['nom'] ?>
+                                            <td><?= $afficher_cat['nom'] ?>
 
-                                            <div>
-                                                <form method="POST" action="administration_categorie.php">
-                                                    <div class="row d-flex justify-content-center">
+                                                <div>
+                                                    <form method="POST" action="administration_categorie.php">
+                                                        <div class="row d-flex justify-content-center">
 
-                                                        <div class="col-6 col-sm-5">
-                                                            <input type="hidden" name="id" value="<?= $afficher_cat['id'] ?>" />
-                                                            <input type="text" class="form-control" name="nom" value="<?= $afficher_cat['nom'] ?>" required />
+                                                            <div class="col-6 col-sm-5">
+                                                                <input type="hidden" name="id" value="<?= $afficher_cat['id'] ?>" />
+                                                                <input type="text" class="form-control" name="nom" value="<?= $afficher_cat['nom'] ?>" required />
 
-                                                            <button class="col-6 col-sm-4 btn btn-success" type="submit">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                                                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                                                                </svg>
-                                                            </button>
+                                                                <button class="col-6 col-sm-4 btn btn-success" type="submit">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                                                    </svg>
+                                                                </button>
+
+                                                            </div>
 
                                                         </div>
+                                                    </form>
 
-                                                    </div>
+                                                </div>
+
+
+                                            </td>
+
+
+                                            <td>
+
+                                                <form method="POST" action="administration_categorie.php">
+                                                    <input type="hidden" name="idSupprCat" value="<?= $afficher_cat['id'] ?>" />
+                                                    <button id="btnSupCompte" class="btn btn-danger">X</button>
                                                 </form>
-
-                                            </div>
-
-
-                                        </td>
-
-
-                                        <td>
-
-                                            <form method="POST" action="administration_categorie.php">
-                                                <input type="hidden" name="idSupprCat" value="<?= $afficher_cat['id'] ?>" />
-                                                <button id="btnSupCompte" class="btn btn-danger">X</button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
 
 
 
-                                </div>
+                                    </div>
 
 
                             <?php }
+                            }
                             ?>
                         </thead>
                     </table>

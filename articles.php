@@ -120,7 +120,7 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
                                 <img src='<?= $articles['image'] ?>' alt='profile image' class="profile-img">
                                 <p class="name"><?= $articles['titre'] ?></p>
                                 <p class="description"><?= $articles['description'] ?></p>
-                                <a href="./article.php?id=<?= $articles['id'] ?>">Lire la suite</a>@
+                                <a href="./article.php?id=<?= $articles['id'] ?>">Lire la suite</a>
                             </a>
                         </div>
 

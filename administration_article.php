@@ -46,11 +46,6 @@ if (!empty($_POST['actuArticle'])) {
     $administrateurController->validation_modificationAdminArticleContenu($_POST['id'], $msg_article);
 }
 
-if (!empty($_POST['actuArticle'])) {
-    $msg_article = Securite::secureHTML($_POST['actuArticle']);
-    $administrateurController->validation_modificationAdminArticleContenu($_POST['id'], $msg_article);
-}
-
 
 if (!empty($_POST['idSupprArt'])) {
     $administrateurController->validation_modificationSupprAdminArt($_POST['idSupprArt']);
@@ -142,10 +137,10 @@ if (isset($_FILES['file'])) {
 
                                 <th>Categorie</th>
                                 <th>Titre</th>
-                                <th>description</th>
-                                <th>Article</th>
+                                <th>modifier article</th>
                                 <th>Créateur</th>
                                 <th>Supprimer</th>
+
 
                             </tr>
 
@@ -159,112 +154,57 @@ if (isset($_FILES['file'])) {
 
                                         <td><?= $article['nom'] ?>
 
-                                            <div>
-                                                <form method="POST" action="administration_article.php">
-                                                    <div class="row d-flex justify-content-center">
-                                                        <input type="hidden" name="id" value="<?= $article['id'] ?>" />
-                                                        <div class="col-4">
 
-                                                            <select name="categorie">
+                                            <form method="POST" action="administration_article.php">
+                                                <div class="row d-flex justify-content-center">
+                                                    <input type="hidden" name="id" value="<?= $article['id'] ?>" />
+                                                    <div class="col-4">
 
-                                                                <?php foreach ($getcatadmin as $cat) { ?>
+                                                        <select name="categorie">
+
+                                                            <?php foreach ($getcatadmin as $cat) {
+                                                                if ($cat['nom'] !== "categorie suppr") { ?>
                                                                     <option value="<?= $cat['id'] ?>"><?= $cat['nom'] ?></option>
 
-                                                                <?php
-                                                                } ?>
-                                                            </select> <button class="col-2 btn btn-success" type="submit">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                                                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                                                                </svg>
-                                                            </button>
-
-                                                        </div>
+                                                            <?php
+                                                                }
+                                                            } ?>
+                                                        </select> <button class="col-2 btn btn-success" type="submit">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                                                            </svg>
+                                                        </button>
 
                                                     </div>
-                                                </form>
 
-                                            </div>
+                                                </div>
+                                            </form>
+
+
 
 
                                         </td>
 
                                         <td><?= $article['titre'] ?>
 
-                                            <div>
-                                                <form method="POST" action="administration_article.php">
-                                                    <div class="row d-flex justify-content-center">
 
-                                                        <div class="col-4">
-                                                            <input type="hidden" name="id" value="<?= $article['id'] ?>" />
-                                                            <input type="text" class="form-control" name="titre" value="<?= $article['titre'] ?>" required />
-
-                                                            <button class="col-2 btn btn-success" type="submit">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                                                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                                                                </svg>
-                                                            </button>
-
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-
-                                            </div>
 
 
                                         </td>
 
-                                        <td><?= $article['description'] ?>
+                                        <td>
 
-                                            <div>
-                                                <form method="POST" action="administration_article.php">
-                                                    <div class="row d-flex justify-content-center">
 
-                                                        <div class="col-10">
-                                                            <input type="hidden" name="id" value="<?= $article['id'] ?>" />
-                                                            <textarea type="text" class="form-control" name="actuDescription" required /> <?= $article['description'] ?> </textarea>
 
-                                                            <button class="col-2 btn btn-success" type="submit">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                                                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                                                                </svg>
-                                                            </button>
+                                            <a href="./administration_article_modif.php?id=<?= $article['id'] ?>"><button id="btnSupCompte" class="btn btn-success">Titre/description/contenu</button></a>
 
-                                                        </div>
 
-                                                    </div>
-                                                </form>
-
-                                            </div>
 
                                         </td>
 
 
 
-                                        <td><?= $article['article'] ?>
 
-                                            <div>
-                                                <form method="POST" action="administration_article.php">
-                                                    <div class="row d-flex justify-content-center">
-
-                                                        <div class="col-10">
-                                                            <input type="hidden" name="id" value="<?= $article['id'] ?>" />
-                                                            <textarea type="text" class="form-control" name="actuArticle" required /> <?= $article['article'] ?> </textarea>
-
-                                                            <button class="col-2 btn btn-success" type="submit">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-                                                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                                                                </svg>
-                                                            </button>
-
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-
-                                            </div>
-
-                                        </td>
 
 
 
@@ -280,7 +220,7 @@ if (isset($_FILES['file'])) {
                                                             <select name="login">
 
                                                                 <?php foreach ($getLogin as $login) {
-                                                                    if ($login['id_droits'] == 3 || $login['id_droits'] == 2) {
+                                                                    if ($login['id_droits'] == 3 || $login['id_droits'] == 2 && $login['login'] !== "utilisateur supprimé") {
 
                                                                 ?>
                                                                         <option value="<?= $login['id'] ?>"><?= $login['login'] ?></option>

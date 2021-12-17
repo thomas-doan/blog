@@ -106,7 +106,7 @@ if (!empty($_POST['login_sup'])) {
 
                             </tr>
                             <?php foreach ($utilisateurs as $utilisateur) {
-                                if ($utilisateur['login'] !== $_SESSION['profil']["login"]) { ?>
+                                if ($utilisateur['login'] !== $_SESSION['profil']["login"] && $utilisateur['login'] !== "utilisateur supprimé") { ?>
                                     <div class="text-center">
 
                                     </div>
