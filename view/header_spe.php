@@ -27,9 +27,11 @@ $getCategories =  $visiteurController->get_categories();
             <div class="menu-deroulant">
                 <li><a href="#">Articles</a>
                     <ul>
-                        <?php foreach ($getCategories as $nomCategories) { ?>
-                            <li><a class="lien" href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>">Cat : <?= $nomCategories['nom'] ?></a></li>
-                        <?php } ?>
+                        <?php foreach ($getCategories as $nomCategories) {
+                            if ($nomCategories['nom'] !== "categorie suppr") { ?>
+                                <li><a class="lien" href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>">Cat : <?= $nomCategories['nom'] ?></a></li>
+                        <?php }
+                        }  ?>
                         <li><a class="lien" href="../blog/articles.php">Tous les articles</a></li>
 
 

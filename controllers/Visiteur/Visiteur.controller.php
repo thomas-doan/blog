@@ -56,7 +56,7 @@ class VisiteurController extends MainController
     } */
 
 
-    public function login()
+    /*   public function login()
     {
         $data_page = [
             "page_description" => "Page de connexion Flower power",
@@ -78,7 +78,7 @@ class VisiteurController extends MainController
             "template" => "views/common/template.php"
         ];
         $this->genererPage($data_page);
-    }
+    } */
 
 
     public function troisArticlesRecents()

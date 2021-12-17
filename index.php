@@ -106,7 +106,7 @@ $get3Articles =  $visiteurController->troisArticlesRecents();
                             <p class="titre"><?= $article['titre'] ?></p>
                             <p class="description"><?= $article['description'] ?></p>
                             <a href="./article.php?id=<?= $article['id'] ?>">Lire la suite</a>
-                            <?php var_dump($article['image']) ?>
+
                         </a>
                     </div>
 

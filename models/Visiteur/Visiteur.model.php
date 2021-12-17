@@ -86,7 +86,7 @@ SELECT id FROM commentaires) GROUP BY fk_id_commentaires");
 
     public function get_article($id)
     {
-        $req = "SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id WHERE (articles.id =:article_id)";
+        $req = "SELECT articles.id, articles.titre, articles.date, articles.image AS article_image, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom FROM articles INNER JOIN categories ON articles.id_categorie = categories.id WHERE (articles.id =:article_id)";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":article_id", $id, PDO::PARAM_STR);
         $stmt->execute();

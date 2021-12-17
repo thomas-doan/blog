@@ -74,7 +74,14 @@ if (isset($_POST['message'])) {
             <main class="c_main">
 
 
+
+
                 <div class="layout_article">
+
+                    <div class="image_article">
+                        <img src='<?= $data_article['article_image'] ?>' alt='profile image'>
+
+                    </div>
                     <div class="categorie">
                         <p class="cat_date"><?= $date_formate ?> dans <span>Catégorie : <?= $data_article['nom'] ?> </span> </p>
                     </div>

@@ -90,9 +90,11 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
                             <?php } ?>
 
                             <ul>
-                                <?php foreach ($getCategories as $nomCategories) { ?>
-                                    <li><a href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>"><?= $nomCategories['nom'] ?></a></li>
-                                <?php } ?>
+                                <?php foreach ($getCategories as $nomCategories) {
+                                    if ($nomCategories['nom'] !== "categorie suppr") { ?>
+                                        <li><a href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>"><?= $nomCategories['nom'] ?></a></li>
+                                <?php }
+                                } ?>
 
                             </ul>
                             </li>

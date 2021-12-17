@@ -433,3 +433,10 @@
                     border: none;
                     background-color: ghostwhite;
                 }
+                
+                .creation_image_admin {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }

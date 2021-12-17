@@ -24,11 +24,38 @@ $getLogin = $administrateurController->droits();
 $get_creer_cat_admin = $administrateurController->recup_cats();
 
 
-if (isset($_POST['id']) && isset($_POST['id_utilisateur']) && isset($_POST['message']) && isset($_POST['titre']) && isset($_POST['description'])) {
+if (isset($_FILES['file']) && isset($_POST['id']) && isset($_POST['id_utilisateur']) && isset($_POST['message']) && isset($_POST['titre']) && isset($_POST['description'])) {
+
+    $tmpName = $_FILES['file']['tmp_name'];
+    $name = $_FILES['file']['name'];
+    $size = $_FILES['file']['size'];
+    $error = $_FILES['file']['error'];
+
+    $tabExtension = explode('.', $name);
+
+    $extension = strtolower(end($tabExtension));
+
+    $extensions = ['jpg', 'png', 'jpeg', 'gif'];
+    $maxSize = 400000;
+
+    if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
+
+        $uniqueName = uniqid('', true);
+        $msg_description = Securite::secureHTML($_POST['add_nom_image']);
+        $file = "$msg_description" .  $uniqueName  . "." . $extension;
+
+        $nom = './public/image/' . "$msg_description" . $uniqueName  . "." . $extension;
+        define('SITE_ROOT', realpath(dirname(__FILE__)));
+        move_uploaded_file($tmpName, SITE_ROOT . '/public/image/' . $file);
+    } else {
+        Toolbox::ajouterMessageAlerte("format jpg/png/jpeg/gif uniquement et une taille maximum de 40mo", Toolbox::COULEUR_ROUGE);
+    }
+
+
     $message = Securite::secureHTML($_POST['message']);
     $titre = Securite::secureHTML($_POST['titre']);
     $description = Securite::secureHTML($_POST['description']);
-    $administrateurController->admin_creer_article($_POST['id'], $_POST['id_utilisateur'], $message, $titre, $description);
+    $administrateurController->admin_creer_article($_POST['id'], $_POST['id_utilisateur'], $nom, $message, $titre, $description);
 }
 
 ?>
@@ -65,7 +92,18 @@ if (isset($_POST['id']) && isset($_POST['id_utilisateur']) && isset($_POST['mess
                     <h1>Créer des articles</h1>
                     <div class="com">
 
-                        <form method="POST" action="admin_creer_article.php">
+                        <form method="POST" action="admin_creer_article.php" enctype="multipart/form-data">
+                            <div class="creation_image_admin">
+                                <p>Choisir une image : </p>
+                                <div class="champ_image_art_admin">
+                                    <!--    <form action="admin_creer_article.php" method="POST" enctype="multipart/form-data"> -->
+                                    <input type="text" name="add_nom_image" value="" placeholder="nom de votre image" />
+                                    <input type="file" name="file">
+
+                                    <!-- </form> -->
+                                </div>
+
+                            </div>
 
 
                             <div class="menu_crea_article">

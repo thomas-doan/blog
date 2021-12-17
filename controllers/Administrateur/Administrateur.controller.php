@@ -62,12 +62,12 @@ class AdministrateurController extends MainController
         exit();
     }
 
-    public function admin_creer_article($id, $id_utilisateur, $message, $titre, $description)
+    public function admin_creer_article($id, $id_utilisateur, $image, $message, $titre, $description)
     {
 
 
-        if (!empty($id) && !empty($id_utilisateur) && !empty($message) && !empty($titre) && !empty($description)) {
-            if ($this->administrateurManager->creation_article($id, $id_utilisateur,  $message, $titre, $description)) {
+        if (!empty($id) && !empty($id_utilisateur) && !empty($image) && !empty($message) && !empty($titre) && !empty($description)) {
+            if ($this->administrateurManager->creation_article($id, $id_utilisateur, $image,  $message, $titre, $description)) {
                 Toolbox::ajouterMessageAlerte("l'article est posté", Toolbox::COULEUR_VERTE);
             }
         } else {
