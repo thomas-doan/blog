@@ -59,7 +59,7 @@ $get3Articles =  $visiteurController->troisArticlesRecents();
                 <h2>NOTRE PHILOSOPHIE</h2>
             </div>
 
-            <section class="c_section_carte">
+            <!--    <section class="c_section_carte">
                 <div class="container_sct_original" data-aos="zoom-out" data-aos-duration="3000">
                     <div class='banner-img'>
                     </div>
@@ -86,7 +86,48 @@ $get3Articles =  $visiteurController->troisArticlesRecents();
                 </div>
 
 
+            </section> -->
+            <section>
+                <div class="container_responsive">
+                    <div class="card" data-aos="fade-up" data-aos-duration="3000" data-aos-offset="0">
+                        <div class="imgBx">
+                            <img src="./public/image/voyagez.png">
+                        </div>
+                        <div class="contentBx">
+                            <div class="content">
+                                <h3>Préparer vos voyages</h3>
+                                <p>Passionnés de voyage et de découverte, on souhaite vous faire partager notre experience pour faciliter vos futurs séjours.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" data-aos="fade-down" data-aos-duration="6000" data-aos-offset="0">
+                        <div class="imgBx">
+                            <img src="./public/image/surfez.png">
+                        </div>
+                        <div class="contentBx">
+                            <div class="content">
+                                <h3>Des articles pour les passionnés de surf</h3>
+                                <p>Plus qu'une passion, un style de vie. On part au bout du monde pour surfer des vagues parfaites dans des cadres paradisiaques.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="3000" data-aos-offset="0">
+                        <div class="imgBx">
+                            <img src="./public/image/decouvrez.png">
+                        </div>
+                        <div class="contentBx">
+                            <div class="content">
+                                <h3>Mieux connaître ce pays méconnu</h3>
+                                <p>Pour nous, partir surfer à l'étranger ne signifie pas rester sur la plage mais d'abord découvrir une culture, rencontrer et partager.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </section>
+
+
             <section class="c_section_transition">
                 <p data-aos="fade-right" data-aos-duration="3000">NOS ARTICLES</p>
             </section>
@@ -103,10 +144,10 @@ $get3Articles =  $visiteurController->troisArticlesRecents();
                 width: 100%;
                 background-position: center;
                 background-repeat: no-repeat;
-                background-size: cover;">
+                background-size: cover;" data-aos="flip-up" data-aos-duration="6000">
                             </div>
                             <img src='<?= $article['image'] ?>' alt='profile image' class="profile-img">
-                            <p class="titre" data-aos="fade-up" data-aos-duration="3000"><?= $article['titre'] ?></p>
+                            <p class="titre" data-aos="fade-right" data-aos-duration="6000"><?= $article['titre'] ?></p>
                             <p class="description" data-aos="fade-up" data-aos-duration="3000"><?= $article['description'] ?></p>
                             <a href="./article.php?id=<?= $article['id'] ?>" data-aos="fade-down" data-aos-duration="3000">Lire la suite</a>
 

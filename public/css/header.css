@@ -158,8 +158,8 @@
 .container_diff {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 35vh min-content min-content min-content;
-    grid-template-areas: "header header header header" "main main main main" "main main main main" "footer footer footer footer";
+    grid-template-rows: 35vh min-content min-content min-content min-content;
+    grid-template-areas: "header header header header" "main main main main" "main main main main" "main main main main" "footer footer footer footer";
 }
 
 .c_header_login {

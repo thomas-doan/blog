@@ -10,16 +10,16 @@
                 .container {
                     display: grid;
                     grid-template-columns: repeat(1, 1fr);
-                    grid-template-rows: 100vh min-content min-content min-content;
-                    grid-template-areas: "header header header header" "main main main main" "main main main main" "footer footer footer footer";
+                    grid-template-rows: 100vh min-content min-content min-content min-content;
+                    grid-template-areas: "header header header header" "main main main main" "main main main main" "main main main main" "footer footer footer footer";
                 }
                 
                 @media (max-width: 900px) {
                     .container {
                         display: grid;
                         grid-template-columns: repeat(1, 1fr);
-                        grid-template-rows: 55vh min-content min-content min-content;
-                        grid-template-areas: "header header header header" "main main main main" "main main main main" "footer footer footer footer";
+                        grid-template-rows: 55vh min-content min-content min-content min-content;
+                        grid-template-areas: "header header header header" "main main main main" "main main main main" "main main main main" "footer footer footer footer";
                     }
                     .nav_pagination {
                         width: 100%;
@@ -61,6 +61,97 @@
                     color: gray;
                     word-spacing: 0.3rem;
                 }
+                /***************CONTAINER RESPONSIVE ***************/
+                
+                .container_responsive {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    max-width: 100vw;
+                    padding-bottom: 12%;
+                }
+                
+                .container_responsive .card {
+                    position: relative;
+                    width: 20rem;
+                    height: 20rem;
+                    margin: .9375rem;
+                    overflow: hidden;
+                }
+                
+                .container_responsive .card .imgBx,
+                .container_responsive .card .contentBx {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                .container_responsive .card .imgBx img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                
+                .container_responsive .card .contentBx::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: #fff;
+                    transform: scaleX(0);
+                    transition: transform 0.5s ease-in-out;
+                    transform-origin: right;
+                    transition-delay: 0.5s;
+                }
+                
+                .container_responsive .card:hover .contentBx::before {
+                    transform: scaleX(1);
+                    transition: transform 0.5s ease-in-out;
+                    transform-origin: left;
+                    transition-delay: 0s;
+                }
+                
+                .container_responsive .card .contentBx {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .container_responsive .card .contentBx .content {
+                    position: relative;
+                    padding: 1.875rem;
+                    z-index: 1;
+                    transition: 0.5s;
+                    transform: translateX(-300px);
+                    transition-delay: 0s;
+                }
+                
+                .container_responsive .card:hover .contentBx .content {
+                    transform: translateX(0px);
+                    transition-delay: 0.5s;
+                }
+                
+                .container_responsive .card .contentBx .content h3 {
+                    font-size: 1.3em;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+                
+                .container_responsive .card .contentBx .content p {
+                    font-size: 1em;
+                    line-height: 1.4em;
+                    font-weight: 300;
+                }
+                /*****************FIN CONTAINER RESPONSIVE ***********/
                 /*   -----------------------***SECTION2**** ----------------------------- */
                 /*   -----------------------***SECTION2**** ----------------------------- */
                 
@@ -69,7 +160,7 @@
                     grid-template-columns: repeat(auto-fit, 20rem);
                     justify-content: center;
                     column-gap: 2rem;
-                    padding-top: 1%;
+                    padding-top: 5%;
                     padding-bottom: 5%;
                 }
                 
