@@ -6,20 +6,20 @@
             </div>
 
             <section class="c_section_carte">
-                <div class="container_sct">
+                <div class="container_sct" data-aos="flip-left" data-aos-duration="2000">
 
                     <i class="fa fa-map-marker"></i>
                     <p class="name">Adresse</p>
                     <p class="description">33 av des chartreux 13004 Marseille</p>
 
                 </div>
-                <div class="container_sct">
+                <div class="container_sct" data-aos="flip-left" data-aos-duration="2000">
                     <i class="fas fa-mobile-alt"></i>
                     <p class="name">Telephone</p>
                     <p class="description">06 61 11 99 48</p>
 
                 </div>
-                <div class="container_sct">
+                <div class="container_sct" data-aos="flip-left" data-aos-duration="2000">
                     <i class="fa fa-paper-plane"></i>
                     <p class="name">Email</p>
                     <p class="description">zephyr@gmail.com</p>

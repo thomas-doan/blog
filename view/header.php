@@ -19,7 +19,7 @@ $getCategories =  $visiteurController->get_categories();
 
 <header class="c_header">
 
-    <img id="img_background_header" src="./public/image/mer.jpg" alt="background home" />
+    <img id="img_background_header" src="./public/image/mer.jpg" alt="background home" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-duration="3000" data-aos-delay="3500" data-aos-offset="0" />
     <nav class="c_nav">
         <ul id="navbar" class="nav">
 
@@ -91,10 +91,10 @@ $getCategories =  $visiteurController->get_categories();
     </nav>
     <div class="titre_blog">
         <a href="../blog/index.php">
-            <p id="name">ZEPHYR <span>BLOG</span> </p>
+            <p id="name" data-aos="fade-right" data-aos-duration="3000">ZEPHYR <span data-aos="fade-up" data-aos-duration="6000" data-aos-delay="8000">BLOG</span> </p>
         </a>
         <a>
-            <p>Notre histoire</p>
+            <p data-aos="fade-right" data-aos-duration="3000">Notre histoire</p>
         </a>
 
     </div>

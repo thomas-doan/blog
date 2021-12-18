@@ -55,9 +55,11 @@ if (!empty($_POST['titre']) && !empty($_POST['description']) && !empty($_POST['a
     <link rel="stylesheet" href="./public/css/main.css">
     <link rel="stylesheet" href="./public/css/login.css">
     <link rel="stylesheet" href="./public/css/header.css">
-    <title>login</title>
+    <title>Zephyr Blog admin modification article</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body>
@@ -73,6 +75,7 @@ if (!empty($_POST['titre']) && !empty($_POST['description']) && !empty($_POST['a
 
 
                 <div class="container_com_item">
+                    <?php require_once('./view/gestion_erreur.php'); ?>
                     <h1>modifier article</h1>
 
                     <div class="com">
@@ -94,7 +97,7 @@ if (!empty($_POST['titre']) && !empty($_POST['description']) && !empty($_POST['a
                             <button class="btn btn-primary" type="submit">Envoyer</button>
 
                         </form>
-                        <?php require_once('./view/gestion_erreur.php'); ?>
+
 
 
                     </div>
@@ -113,7 +116,11 @@ if (!empty($_POST['titre']) && !empty($_POST['description']) && !empty($_POST['a
         <?php require_once('./view/footer.php'); ?>
     </div>
     </div>
-
+    <script>
+        AOS.init({
+            duration: 2000,
+        })
+    </script>
 
 </body>
 

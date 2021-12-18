@@ -64,8 +64,11 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
 
     <link rel="stylesheet" href="./public/css/main.css">
     <link rel="stylesheet" href="./public/css/header.css">
-    <title>Zephyr Blog</title>
+    <title>Zephyr Blog articles</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 </head>
 
 <body>
@@ -76,7 +79,7 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
         <main class="c_main">
 
             <section class="c_section_transition">
-                <p>NOS ARTICLES</p>
+                <p data-aos="fade-right" data-aos-duration="2000">NOS ARTICLES</p>
             </section>
 
             <div class="afficher_articles">
@@ -95,7 +98,7 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
                                         <li><a href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>"><?= $nomCategories['nom'] ?></a></li>
                                 <?php }
                                 } ?>
-
+                                <li><a href="./articles.php">Tous les articles</a></li>
                             </ul>
                             </li>
 
@@ -118,8 +121,8 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
                             background-size: cover;">
                                 </div>
                                 <img src='<?= $articles['image'] ?>' alt='profile image' class="profile-img">
-                                <p class="name"><?= $articles['titre'] ?></p>
-                                <p class="description"><?= $articles['description'] ?></p>
+                                <p class="name" data-aos="fade-right" data-aos-duration="1000"><?= $articles['titre'] ?></p>
+                                <p class="description" data-aos="fade-right" data-aos-duration="1000"><?= $articles['description'] ?></p>
                                 <a href="./article.php?id=<?= $articles['id'] ?>">Lire la suite</a>
                             </a>
                         </div>
@@ -163,10 +166,10 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
                     <i class="fa fa-paper-plane"></i>
                 </span>
 
-                <p id="abonnement">Nos aventures !</p>
+                <p id="abonnement" data-aos="fade-right" data-aos-duration="2000">Nos aventures !</p>
                 <form action="#">
-                    <input type="text" name="" value="" placeholder="nous suivre par email" required="">
-                    <input type="submit" name="" value="Envoyer">
+                    <input type="text" name="" value="" placeholder="nous suivre par email" required="" data-aos="fade-right" data-aos-duration="2000">
+                    <input type="submit" name="" value="Envoyer" data-aos="fade-right" data-aos-duration="2000">
                 </form>
             </section>
 
@@ -177,7 +180,11 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
 
 
     </div>
-
+    <script>
+        AOS.init({
+            duration: 2000,
+        })
+    </script>
 </body>
 
 </html>

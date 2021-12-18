@@ -57,8 +57,11 @@ if (isset($_POST['message'])) {
     <link rel="stylesheet" href="./public/css/main.css">
     <link rel="stylesheet" href="./public/css/article.css">
     <link rel="stylesheet" href="./public/css/header.css">
-    <title>Zephyr Blog</title>
+    <title>Zephyr Blog article</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 </head>
 
 <body>
@@ -78,20 +81,20 @@ if (isset($_POST['message'])) {
 
                 <div class="layout_article">
 
-                    <div class="image_article">
+                    <div class="image_article" data-aos="zoom-in" data-aos-duration="2000">
                         <img src='<?= $data_article['article_image'] ?>' alt='profile image'>
 
                     </div>
-                    <div class="categorie">
-                        <p class="cat_date"><?= $date_formate ?> dans <span>Catégorie : <?= $data_article['nom'] ?> </span> </p>
+                    <div class="categorie" data-aos="fade-right" data-aos-duration="2000">
+                        <p class="cat_date" ≈><?= $date_formate ?> dans <span>Catégorie : <?= $data_article['nom'] ?> </span> </p>
                     </div>
 
 
 
-                    <div class="titre">
+                    <div class="titre" data-aos="fade-down" data-aos-duration="2000">
                         <p><?= $data_article['titre'] ?></p>
                     </div>
-                    <div class="article">
+                    <div class="article" data-aos="fade-right" data-aos-duration="2000">
                         <p><?= $data_article['article'] ?></p>
                     </div>
                     <div class="com">
@@ -179,6 +182,11 @@ if (isset($_POST['message'])) {
 
         </div>
     </div>
+    <script>
+        AOS.init({
+            duration: 2000,
+        })
+    </script>
 </body>
 
 </html>

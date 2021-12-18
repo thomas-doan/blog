@@ -77,10 +77,11 @@ if (!empty($_POST['nom'])) {
 
     <link rel="stylesheet" href="./public/css/main.css">
     <link rel="stylesheet" href="./public/css/header.css">
-    <title>Zephyr Blog</title>
+    <title>Zephyr Blog administration categorie</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 </head>
 
@@ -191,6 +192,11 @@ if (!empty($_POST['nom'])) {
 
         <?php require_once('./view/footer.php'); ?>
     </div>
+    <script>
+        AOS.init({
+            duration: 2000,
+        })
+    </script>
 </body>
 
 </html>
