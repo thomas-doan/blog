@@ -27,6 +27,12 @@
     color: black;
 }
 
+.c_header .titre_blog #name:hover {
+    border-bottom: solid;
+    border-width: 1px;
+    color: darkslategrey;
+}
+
 .c_header .titre_blog #name span {
     color: rgb(166, 181, 181);
 }

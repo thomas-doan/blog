@@ -8,12 +8,14 @@ require_once("./controllers/Administrateur/Administrateur.controller.php");
 
 
 
-if (!isset($_SESSION['profil']['id'])) {
+
+
+if (!Securite::estConnecte()) {
+
+
     header('Location:index.php');
 }
-
-
-if (Securite::estAdministrateur() || !Securite::estModerateur()) {
+if (Securite::estUtilisateur()) {
     header('Location:index.php');
 }
 

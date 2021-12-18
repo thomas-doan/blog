@@ -272,6 +272,8 @@
                 .c_main .c_section_transition_email input[type="text"] {
                     background: rgba(255, 255, 255, 0.255);
                     border: none;
+                    height: 6vh;
+                    width: 10vw;
                 }
                 
                 .c_main .c_section_transition_email input::placeholder {
