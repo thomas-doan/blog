@@ -161,9 +161,9 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
                     <?php } ?>
                 </ul>
             </div>
-            <section class="c_section_transition">
+            <section class="c_section_transition_email">
                 <span style="font-size: 3rem; color: rgb(181, 150, 104);">
-                    <i class="fa fa-paper-plane"></i>
+                    <i class="fa fa-paper-plane" data-aos="fade-up" data-aos-delay="3500" data-aos-offset="0"></i>
                 </span>
 
                 <p id="abonnement" data-aos="fade-right" data-aos-duration="2000">Nos aventures !</p>

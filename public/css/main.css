@@ -131,7 +131,7 @@
                     padding: 1.875rem;
                     z-index: 1;
                     transition: 0.5s;
-                    transform: translateX(-300px);
+                    transform: translateY(-300px);
                     transition-delay: 0s;
                 }
                 
@@ -242,21 +242,47 @@
                     flex-direction: column;
                 }
                 
-                .c_main .c_section_transition p {
+                .c_main .c_section_transition_email {
+                    background-position: center;
+                    height: 40vh;
+                    background-attachment: fixed;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                    background-image: url('../image/land.jpg');
+                    filter: sepia(30%);
+                }
+                
+                .c_main .c_section_transition_email p {
                     letter-spacing: clamp(0.1rem, 2.5vw, 5rem);
                     font-size: clamp(1rem, 2.5vw, 2.5rem);
                     color: rgb(181, 150, 104);
                 }
                 
-                .c_main .c_section_transition #abonnement {
+                .c_main .c_section_transition_email #abonnement {
                     font-size: clamp(1rem, 2.5vw, 2.5rem);
                     color: rgb(181, 150, 104);
                 }
                 /*  ------------FOOOOOOTER--------------------- */
                 
-                .c_main .c_section_transition input[type="text"] {
+                .c_main .c_section_transition_email input[type="text"] {
                     background: rgba(255, 255, 255, 0.255);
                     border: none;
+                }
+                
+                .c_main .c_section_transition_email input::placeholder {
+                    color: rgb(255, 255, 255);
+                }
+                /******/
+                
+                .c_main .c_section_transition p {
+                    letter-spacing: clamp(0.1rem, 2.5vw, 5rem);
+                    font-size: clamp(1rem, 2.5vw, 2.5rem);
+                    color: rgb(181, 150, 104);
                 }
                 
                 .c_footer {
