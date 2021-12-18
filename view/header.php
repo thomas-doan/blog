@@ -74,6 +74,21 @@ $getCategories =  $visiteurController->get_categories();
                 </div>
             <?php endif; ?>
 
+            <?php if (Securite::estConnecte() && Securite::estModerateur()) {  ?>
+                <div class="menu_deroulant_index">
+                    <li><a href="#">Administration</a>
+                        <ul>
+
+                            <li> <a href="../blog/administration_article.php">Gérer les articles</a></li>
+
+
+                        </ul>
+                    </li>
+                </div>
+
+            <?php  }
+            ?>
+
             <a class="icon" onclick="myFunction()">&#9776;</a>
 
         </ul>
@@ -94,7 +109,7 @@ $getCategories =  $visiteurController->get_categories();
             <p id="name" data-aos="fade-right" data-aos-duration="3000">ZEPHYR <span data-aos="fade-up" data-aos-duration="6000" data-aos-delay="8000">BLOG</span> </p>
         </a>
         <a>
-            <p data-aos="fade-right" data-aos-duration="3000">Notre histoire</p>
+            <p data-aos="fade-down" data-aos-duration="5000">Notre histoire</p>
         </a>
 
     </div>

@@ -53,7 +53,7 @@ $get3Articles =  $visiteurController->troisArticlesRecents();
                 <h2 data-aos="fade-left" data-aos-duration="3000">VOYAGE & SURF</h2>
                 <img id="fleche" src="./public/image/icone_fleche.png" alt="icone fleche" />
 
-                <p data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="3500" data-aos-offset="0">Passionnés de voyage et de surf, c’est après avoir réalisé plusieurs trips en Espagne, Portugal,<br> Maroc, Afrique du Sud et du Mexique, que nous avons découvert le Nicaragua.<br> Devant la méconnaissance de ce pays en Europe, et après y avoir séjourné plusieurs fois,<br> nous avons décidé de créer Zephyr Blog afin de rendre cette destination plus accessible.</p>
+                <p data-aos="fade-down" data-aos-easing="ease-in-back" data-aos-delay="5000" data-aos-offset="0">Passionnés de voyage et de surf, c’est après avoir réalisé plusieurs trips en Espagne, Portugal,<br> Maroc, Afrique du Sud et du Mexique, que nous avons découvert le Nicaragua.<br> Devant la méconnaissance de ce pays en Europe, et après y avoir séjourné plusieurs fois,<br> nous avons décidé de créer Zephyr Blog afin de rendre cette destination plus accessible.</p>
             </section>
             <div class="philosophie" data-aos="fade-right" data-aos-duration="3000">
                 <h2>NOTRE PHILOSOPHIE</h2>

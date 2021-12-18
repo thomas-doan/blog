@@ -12,9 +12,12 @@ if (!isset($_SESSION['profil']['id'])) {
     header('Location:index.php');
 }
 
-if (Securite::estConnecte() && !Securite::estAdministrateur()) {
+
+if (Securite::estAdministrateur() || !Securite::estModerateur()) {
     header('Location:index.php');
 }
+
+
 
 $administrateurController = new AdministrateurController();
 $utilisateurController = new UtilisateurController();

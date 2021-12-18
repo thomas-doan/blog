@@ -12,9 +12,7 @@ $administrateurController = new AdministrateurController();
 
 
 
-if (!Securite::estConnecte()) {
-    header('Location:index.php');
-} elseif (Securite::estConnecte() && !Securite::estAdministrateur()) {
+if (Securite::estAdministrateur() || !Securite::estModerateur()) {
     header('Location:index.php');
 }
 

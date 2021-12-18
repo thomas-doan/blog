@@ -71,6 +71,20 @@ $getCategories =  $visiteurController->get_categories();
                     </li>
                 </div>
             <?php endif; ?>
+            <?php if (Securite::estConnecte() && Securite::estModerateur()) {  ?>
+                <div class="menu_deroulant_index">
+                    <li><a href="#">Administration</a>
+                        <ul>
+
+                            <li> <a href="../blog/administration_article.php">Gérer les articles</a></li>
+
+
+                        </ul>
+                    </li>
+                </div>
+
+            <?php  }
+            ?>
 
             <a class="icon_spe" onclick="myFunction_spe()">&#9776;</a>
 
