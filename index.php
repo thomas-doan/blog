@@ -146,7 +146,7 @@ $get3Articles =  $visiteurController->troisArticlesRecents();
                 background-repeat: no-repeat;
                 background-size: cover;" data-aos="flip-up" data-aos-duration="6000">
                             </div>
-                            <img src='<?= $article['image'] ?>' alt='profile image' class="profile-img">
+                            <img src='<?= $article['image'] ?>' alt='profile image' class="profile-img" data-aos="zoom-out" data-aos-duration="3000">
                             <p class="titre" data-aos="fade-right" data-aos-duration="6000"><?= $article['titre'] ?></p>
                             <p class="description" data-aos="fade-up" data-aos-duration="3000"><?= $article['description'] ?></p>
                             <a href="./article.php?id=<?= $article['id'] ?>" data-aos="fade-down" data-aos-duration="3000">Lire la suite</a>
