@@ -1,7 +1,8 @@
 <?php
-require_once("./controllers/MainController.controller.php");
-require_once("./models/Visiteur/Visiteur.model.php");
-require_once("./controllers/Securite.class.php");
+require_once(__DIR__ . "/../MainController.controller.php");
+
+require_once(__DIR__ . "/../../models/Visiteur/Visiteur.model.php");
+require_once(__DIR__ . "/../Securite.class.php");
 
 class VisiteurController extends MainController
 {

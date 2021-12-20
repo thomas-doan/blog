@@ -1,6 +1,6 @@
 <?php
-require_once("./controllers/MainController.controller.php");
-require_once("./models/Administrateur/Administrateur.model.php");
+require_once(__DIR__ . "/../MainController.controller.php");
+require_once(__DIR__ . "/../../models/Administrateur/Administrateur.model.php");
 
 
 
@@ -140,7 +140,7 @@ class AdministrateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Refresh:0; ../blog/administration_com.php");
+        header("Refresh:0; administration_com.php");
         exit();
     }
 
@@ -155,7 +155,7 @@ class AdministrateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Refresh:0; ../blog/administration_categorie.php");
+        header("Refresh:0; administration_categorie.php");
         exit();
     }
 
@@ -166,7 +166,7 @@ class AdministrateurController extends MainController
 
             Toolbox::ajouterMessageAlerte("La suppression est effectuée", Toolbox::COULEUR_VERTE);
         }
-        header("Refresh:0; ../blog/administration_com.php");
+        header("Refresh:0; administration_com.php");
         exit();
     }
 
@@ -176,7 +176,7 @@ class AdministrateurController extends MainController
 
             Toolbox::ajouterMessageAlerte("La suppression est effectuée", Toolbox::COULEUR_VERTE);
         }
-        header("Refresh:0; ../blog/administration_article.php");
+        header("Refresh:0; administration_article.php");
         exit();
     }
 
@@ -188,7 +188,7 @@ class AdministrateurController extends MainController
 
             Toolbox::ajouterMessageAlerte("La suppression est effectuée", Toolbox::COULEUR_VERTE);
         }
-        header("Refresh:0; ../blog/administration_categorie.php");
+        header("Refresh:0; administration_categorie.php");
         exit();
     }
 

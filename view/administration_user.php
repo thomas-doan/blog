@@ -1,10 +1,12 @@
 <?php
 session_start();
-require_once("./controllers/Toolbox.class.php");
-require_once("./controllers/Securite.class.php");
-require_once("./controllers/Visiteur/Visiteur.controller.php");
-require_once("./controllers/Utilisateur/Utilisateur.controller.php");
-require_once("./controllers/Administrateur/Administrateur.controller.php");
+define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
+    "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
+require_once(__DIR__ . "/../controllers/Toolbox.class.php");
+require_once(__DIR__ . "/../controllers/Securite.class.php");
+require_once(__DIR__ . "/../controllers/Visiteur/Visiteur.controller.php");
+require_once(__DIR__ . "/../controllers/Utilisateur/Utilisateur.controller.php");
+require_once(__DIR__ . "/../controllers/Administrateur/Administrateur.controller.php");
 
 
 
@@ -63,8 +65,9 @@ if (!empty($_POST['login_sup'])) {
     <meta name="description" content="Zephyr Blog l'aventure">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./public/css/main.css">
-    <link rel="stylesheet" href="./public/css/header.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+
+    <link rel="stylesheet" href="../public/css/header.css">
     <title>Zephyr Blog administration utilisateur</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -82,7 +85,7 @@ if (!empty($_POST['login_sup'])) {
 
 
         <div class="container_diff">
-            <?php require_once('./view/header_spe.php'); ?>
+            <?php require_once(__DIR__ . '/header_spe.php'); ?>
             <div class="text-center">
 
 
@@ -239,10 +242,10 @@ if (!empty($_POST['login_sup'])) {
                 </div>
             </div>
         </div>
-        <?php require_once('./view/gestion_erreur.php'); ?>
+        <?php require_once(__DIR__ . '/gestion_erreur.php'); ?>
 
 
-        <?php require_once('./view/footer.php'); ?>
+        <?php require_once(__DIR__ . '/footer_spe.php'); ?>
     </div>
     <script>
         AOS.init({

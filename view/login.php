@@ -1,12 +1,14 @@
 <?php
 session_start();
+define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
+    "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 
 
-require_once("./controllers/Toolbox.class.php");
-require_once("./controllers/Securite.class.php");
-require_once("./controllers/Visiteur/Visiteur.controller.php");
-require_once("./controllers/Utilisateur/Utilisateur.controller.php");
-require_once("./controllers/Administrateur/Administrateur.controller.php");
+require_once(__DIR__ . "/../controllers/Toolbox.class.php");
+require_once(__DIR__ . "/../controllers/Securite.class.php");
+require_once(__DIR__ . "/../controllers/Visiteur/Visiteur.controller.php");
+require_once(__DIR__ . "/../controllers/Utilisateur/Utilisateur.controller.php");
+require_once(__DIR__ . "/../controllers/Administrateur/Administrateur.controller.php");
 $visiteurController = new VisiteurController();
 $utilisateurController = new UtilisateurController();
 $administrateurController = new AdministrateurController();
@@ -37,9 +39,9 @@ if (isset($_SESSION['profil']['id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/main.css">
-    <link rel="stylesheet" href="./public/css/login.css">
-    <link rel="stylesheet" href="./public/css/header.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="../public/css/header.css">
     <title>Zephyr Blog login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -56,7 +58,7 @@ if (isset($_SESSION['profil']['id'])) {
 
         <div class="container_diff">
 
-            <?php require_once('./view/header_spe.php'); ?>
+            <?php require_once(__DIR__ . '/header_spe.php'); ?>
 
 
 
@@ -86,13 +88,13 @@ if (isset($_SESSION['profil']['id'])) {
                         <button type="submit">Connexion</button>
                     </div>
 
-                    <?php require_once('./view/gestion_erreur.php'); ?>
+                    <?php require_once(__DIR__ . '/gestion_erreur.php'); ?>
 
                 </form>
             </div>
 
             </main>
-            <?php require_once('./view/footer.php'); ?>
+            <?php require_once(__DIR__ . '/footer_spe.php'); ?>
 
 
         </div>

@@ -1,12 +1,14 @@
 <?php
 session_start();
+define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
+    "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 
 
-require_once("./controllers/Toolbox.class.php");
-require_once("./controllers/Securite.class.php");
-require_once("./controllers/Visiteur/Visiteur.controller.php");
-require_once("./controllers/Utilisateur/Utilisateur.controller.php");
-require_once("./controllers/Administrateur/Administrateur.controller.php");
+require_once(__DIR__ . "/../controllers/Toolbox.class.php");
+require_once(__DIR__ . "/../controllers/Securite.class.php");
+require_once(__DIR__ . "/../controllers/Visiteur/Visiteur.controller.php");
+require_once(__DIR__ . "/../controllers/Utilisateur/Utilisateur.controller.php");
+require_once(__DIR__ . "/../controllers/Administrateur/Administrateur.controller.php");
 $visiteurController = new VisiteurController();
 $utilisateurController = new UtilisateurController();
 
@@ -54,9 +56,12 @@ if (isset($_POST['message'])) {
     <meta name="description" content="Zephyr Blog l'aventure">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./public/css/main.css">
-    <link rel="stylesheet" href="./public/css/article.css">
-    <link rel="stylesheet" href="./public/css/header.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/article.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+
+
+
     <title>Zephyr Blog article</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -73,7 +78,7 @@ if (isset($_POST['message'])) {
 
 
         <div class="container_diff">
-            <?php require_once('./view/header_spe.php'); ?>
+            <?php require_once(__DIR__ . '/header_spe.php'); ?>
             <main class="c_main">
 
 
@@ -82,7 +87,7 @@ if (isset($_POST['message'])) {
                 <div class="layout_article">
 
                     <div class="image_article" data-aos="zoom-in" data-aos-duration="2000">
-                        <img src='<?= $data_article['article_image'] ?>' alt='profile image'>
+                        <img src='.<?= $data_article['article_image'] ?>' alt='profile image'>
 
                     </div>
                     <div class="categorie" data-aos="fade-right" data-aos-duration="2000">
@@ -105,7 +110,7 @@ if (isset($_POST['message'])) {
                             <button class="btnValidCom" type="submit">Envoyer</button>
 
                         </form>
-                        <?php require_once('./view/gestion_erreur.php'); ?>
+                        <?php require_once(__DIR__ . '/gestion_erreur.php'); ?>
                     </div>
                 </div>
 
@@ -177,7 +182,7 @@ if (isset($_POST['message'])) {
 
 
             </main>
-            <?php require_once('./view/footer.php'); ?>
+            <?php require_once(__DIR__ . '/footer_spe.php'); ?>
 
 
         </div>

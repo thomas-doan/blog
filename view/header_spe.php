@@ -1,11 +1,11 @@
 <?php
 
 
-require_once("./controllers/Toolbox.class.php");
-require_once("./controllers/Securite.class.php");
-require_once("./controllers/Visiteur/Visiteur.controller.php");
-require_once("./controllers/Utilisateur/Utilisateur.controller.php");
-require_once("./controllers/Administrateur/Administrateur.controller.php");
+require_once(__DIR__ . "/../controllers/Toolbox.class.php");
+require_once(__DIR__ . "/../controllers/Securite.class.php");
+require_once(__DIR__ . "/../controllers/Visiteur/Visiteur.controller.php");
+require_once(__DIR__ . "/../controllers/Utilisateur/Utilisateur.controller.php");
+require_once(__DIR__ . "/../controllers/Administrateur/Administrateur.controller.php");
 $visiteurController = new VisiteurController();
 $utilisateurController = new UtilisateurController();
 $administrateurController = new AdministrateurController();
@@ -19,11 +19,11 @@ $getCategories =  $visiteurController->get_categories();
 
 <header class="c_header_login">
 
-    <img id="img_background_header" src="./public/image/mer.jpg" alt="background home" />
+    <img id="img_background_header" src="../public/image/mer.jpg" alt="background home" />
     <nav class="c_nav">
         <ul id="navbar_spe" class="nav_spe">
 
-            <li><a class="logo" href="../blog/index.php">Zephyr</a></li>
+            <li><a class="logo" href="../index.php">Zephyr</a></li>
             <div class="menu-deroulant">
                 <li><a href="#">Articles</a>
                     <ul>
@@ -32,7 +32,7 @@ $getCategories =  $visiteurController->get_categories();
                                 <li><a class="lien" href="./articles.php?page=1&categorie=<?= $nomCategories['nom'] ?>">Cat : <?= $nomCategories['nom'] ?></a></li>
                         <?php }
                         }  ?>
-                        <li><a class="lien" href="../blog/articles.php">Tous les articles</a></li>
+                        <li><a class="lien" href="./articles.php">Tous les articles</a></li>
 
 
                     </ul>
@@ -42,18 +42,18 @@ $getCategories =  $visiteurController->get_categories();
 
             <?php if (!Securite::estConnecte()) : ?>
                 <li>
-                    <a href="../blog/login.php">Se connecter</a>
+                    <a href="./login.php">Se connecter</a>
                 </li>
                 <li>
-                    <a href="../blog/inscription.php">Créer compte</a>
+                    <a href="./inscription.php">Créer compte</a>
                 </li>
             <?php else : ?>
                 <li>
-                    <a href="../blog/profil.php">Profil</a>
+                    <a href="./profil.php">Profil</a>
                 </li>
                 <form method="POST" action="login.php">
                     <li>
-                        <a href="../blog/logout.php">Se déconnecter</a>
+                        <a href="./logout.php">Se déconnecter</a>
                     </li>
                 </form>
             <?php endif; ?>
@@ -61,10 +61,10 @@ $getCategories =  $visiteurController->get_categories();
                 <div class="menu-deroulant">
                     <li><a href="#">Administration</a>
                         <ul>
-                            <li> <a href="../blog/administration_user.php">Gérer les droits</a></li>
-                            <li> <a href="../blog/administration_com.php">Gérer les commentaires</a></li>
-                            <li> <a href="../blog/administration_article.php">Gérer les articles</a></li>
-                            <li><a href="../blog/administration_categorie.php">Gérer les categories</a></li>
+                            <li> <a href="./administration_user.php">Gérer les droits</a></li>
+                            <li> <a href="./administration_com.php">Gérer les commentaires</a></li>
+                            <li> <a href="./administration_article.php">Gérer les articles</a></li>
+                            <li><a href="./administration_categorie.php">Gérer les categories</a></li>
 
 
                         </ul>
@@ -76,7 +76,7 @@ $getCategories =  $visiteurController->get_categories();
                     <li><a href="#">Administration</a>
                         <ul>
 
-                            <li> <a href="../blog/administration_article.php">Gérer les articles</a></li>
+                            <li> <a href="./administration_article.php">Gérer les articles</a></li>
 
 
                         </ul>

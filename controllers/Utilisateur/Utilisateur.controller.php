@@ -1,7 +1,7 @@
 <?php
-require_once("./controllers/MainController.controller.php");
-require_once("./models/Utilisateur/Utilisateur.model.php");
-require_once("controllers/Toolbox.class.php");
+require_once(__DIR__ . "/../MainController.controller.php");
+require_once(__DIR__ . "/../../models/Utilisateur/Utilisateur.model.php");
+require_once(__DIR__ . "/../Toolbox.class.php");
 
 
 
@@ -33,12 +33,12 @@ class UtilisateurController extends MainController
             echo $_SESSION['profil'][Securite::COOKIE_NAME];
             echo "<br />";
             echo $_COOKIE[Securite::COOKIE_NAME];
-            header("location:../blog/index.php");
+            header("location:../index.php");
             exit();
         } else {
             Toolbox::ajouterMessageAlerte("Combinaison Login / Mot de passe non valide", Toolbox::COULEUR_ROUGE);
             // $_SESSION['alert'] = 'ruben';
-            header("Location:../blog/login.php");
+            header("Location:./login.php");
             exit();
             // var_dump($_SESSION['alert']);
 
@@ -62,7 +62,7 @@ class UtilisateurController extends MainController
         Toolbox::ajouterMessageAlerte("La deconnexion est effectuée", Toolbox::COULEUR_VERTE);
         unset($_SESSION['profil']);
         setcookie(Securite::COOKIE_NAME, "", time() - 3600);
-        header("location:../blog/index.php");
+        header("location:../index.php");
         exit();
     }
     public function validation_creerCompte($login, $prenom, $nom, $password, $mail)
@@ -107,7 +107,7 @@ class UtilisateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Le login est vide", Toolbox::COULEUR_ROUGE);
         }
-        header("Refresh:0; ../blog/profil.php");
+        header("Refresh:0; ./profil.php");
         exit();
     }
 
@@ -118,7 +118,7 @@ class UtilisateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Refresh:0; ../blog/profil.php");
+        header("Refresh:0; ./profil.php");
         exit();
     }
 
@@ -130,7 +130,7 @@ class UtilisateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Refresh:0; ../blog/profil.php");
+        header("Refresh:0; ./profil.php");
         exit();
     }
 
@@ -142,7 +142,7 @@ class UtilisateurController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Refresh:0; ../blog/profil.php");
+        header("Refresh:0; ./profil.php");
         exit();
     }
 
@@ -203,7 +203,7 @@ class UtilisateurController extends MainController
 
         if ($this->utilisateurManager->bdSuppressionCompte($login)) {
             Toolbox::ajouterMessageAlerte("La suppression du compte est effectuée", Toolbox::COULEUR_VERTE);
-            header("Refresh:0; ../blog/administration_user.php");
+            header("Refresh:0; ./administration_user.php");
             exit();
         } else {
             Toolbox::ajouterMessageAlerte("La suppression n'a pas été effectuée. Contactez l'administrateur", Toolbox::COULEUR_ROUGE);
@@ -244,7 +244,7 @@ class UtilisateurController extends MainController
     }
 
 
-    public  function set_like($id_com)
+    /*     public  function set_like($id_com)
     {
         $test = $this->utilisateurManager->check_like($id_com, $_SESSION['profil']['id']);
         if ($test == FALSE) {
@@ -269,7 +269,7 @@ class UtilisateurController extends MainController
             Toolbox::ajouterMessageAlerte("le like est supprimé", Toolbox::COULEUR_VERTE);
             header("Location: " . URL . "livreOr");
         }
-    }
+    } */
 
 
     /*     public  function unset_like($id_com)

@@ -2,7 +2,7 @@
             <div class="contact">
                 <p>
                     ÉCRIVEZ-NOUS</p>
-                <img id="fleche" src="./public/image/icone_fleche.png" alt="icone fleche" />
+                <img id="fleche" src="../public/image/icone_fleche.png" alt="icone fleche" />
 
             </div>
 

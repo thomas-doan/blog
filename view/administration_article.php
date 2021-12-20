@@ -1,10 +1,12 @@
 <?php
 session_start();
-require_once("./controllers/Toolbox.class.php");
-require_once("./controllers/Securite.class.php");
-require_once("./controllers/Visiteur/Visiteur.controller.php");
-require_once("./controllers/Utilisateur/Utilisateur.controller.php");
-require_once("./controllers/Administrateur/Administrateur.controller.php");
+define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
+    "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
+require_once(__DIR__ . "/../controllers/Toolbox.class.php");
+require_once(__DIR__ . "/../controllers/Securite.class.php");
+require_once(__DIR__ . "/../controllers/Visiteur/Visiteur.controller.php");
+require_once(__DIR__ . "/../controllers/Utilisateur/Utilisateur.controller.php");
+require_once(__DIR__ . "/../controllers/Administrateur/Administrateur.controller.php");
 
 
 
@@ -65,32 +67,7 @@ if (!empty($_POST['actuDescription'])) {
 
 
 
-if (isset($_FILES['file'])) {
-    $tmpName = $_FILES['file']['tmp_name'];
-    $name = $_FILES['file']['name'];
-    $size = $_FILES['file']['size'];
-    $error = $_FILES['file']['error'];
 
-    $tabExtension = explode('.', $name);
-
-    $extension = strtolower(end($tabExtension));
-
-    $extensions = ['jpg', 'png', 'jpeg', 'gif'];
-    $maxSize = 400000;
-
-    if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
-
-        $uniqueName = uniqid('', true);
-        $msg_description = Securite::secureHTML($_POST['add_nom_categorie']);
-        $file = "$msg_description" . $uniqueName  . "." . $extension;
-
-        $nom = './public/image/' . "$msg_description" . $uniqueName  . "." . $extension;
-        define('SITE_ROOT', realpath(dirname(__FILE__)));
-        move_uploaded_file($tmpName, SITE_ROOT . '/public/image/' . $file);
-
-        $administrateurController->admin_creation_categorie($nom, $msg_description);
-    }
-}
 
 ?>
 
@@ -104,8 +81,9 @@ if (isset($_FILES['file'])) {
     <meta name="description" content="Zephyr Blog l'aventure">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./public/css/main.css">
-    <link rel="stylesheet" href="./public/css/header.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+
+    <link rel="stylesheet" href="../public/css/header.css">
     <title>Zephyr Blog Administration article</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -123,10 +101,10 @@ if (isset($_FILES['file'])) {
 
 
         <div class="container_diff">
-            <?php require_once('./view/header_spe.php'); ?>
+            <?php require_once(__DIR__ . '/header_spe.php'); ?>
             <div class="text-center">
 
-                <?php require_once('./view/gestion_erreur.php'); ?>
+                <?php require_once(__DIR__ . '/gestion_erreur.php'); ?>
                 <h1>Gestion des articles</h1>
                 <a href="./admin_creer_article.php"> <button class="btn btn-success" id="btnValidModifLogin" type="submit">Créer un article
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
@@ -275,7 +253,7 @@ if (isset($_FILES['file'])) {
 
 
 
-        <?php require_once('./view/footer.php'); ?>
+        <?php require_once(__DIR__ . '/footer_spe.php'); ?>
     </div>
     <script>
         AOS.init({

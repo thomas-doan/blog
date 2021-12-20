@@ -1,5 +1,5 @@
 <?php
-require_once("Model.class.php");
+require_once(__DIR__ . "/Model.class.php");
 
 abstract class MainManager extends Model
 {
