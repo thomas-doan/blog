@@ -30,7 +30,7 @@
             </section>
             <div class="network">
                 <span style="font-size: 2rem;">
-                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/thomas-doan/blog"><i class="fab fa-github"></i></a>
                     <i class="fab fa-instagram"></i>
                     <i class="fab fa-twitter-square"></i>
                 </span>
