@@ -106,7 +106,7 @@ $getCategories =  $visiteurController->get_categories();
 
     </nav>
     <div class="titre_blog">
-        <a href="../index.php">
+        <a href="./index.php">
             <p id="name" data-aos="fade-right" data-aos-duration="3000">ZEPHYR <span data-aos="fade-up" data-aos-duration="6000" data-aos-delay="8000">BLOG</span> </p>
         </a>
         <a>

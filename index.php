@@ -140,7 +140,7 @@ $get3Articles =  $visiteurController->troisArticlesRecents();
                 ?>
 
                     <div class="container_sct" data-aos="zoom-out" data-aos-duration="3000">
-                        <a href="./article.php?id=<?= $article['id'] ?>">
+                        <a href="./view/article.php?id=<?= $article['id'] ?>">
                             <div style="         position: absolute;
                 background-image: url('<?= $article['image'] ?>');
                 height: 10rem;
@@ -152,7 +152,7 @@ $get3Articles =  $visiteurController->troisArticlesRecents();
                             <img src='<?= $article['image'] ?>' alt='profile image' class="profile-img" data-aos="zoom-out" data-aos-duration="3000">
                             <p class="titre" data-aos="fade-right" data-aos-duration="6000"><?= $article['titre'] ?></p>
                             <p class="description" data-aos="fade-up" data-aos-duration="3000"><?= $article['description'] ?></p>
-                            <a href="./article.php?id=<?= $article['id'] ?>" data-aos="fade-down" data-aos-duration="3000">Lire la suite</a>
+                            <a href="./view/article.php?id=<?= $article['id'] ?>" data-aos="fade-down" data-aos-duration="3000">Lire la suite</a>
 
                         </a>
                     </div>

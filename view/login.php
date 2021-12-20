@@ -24,7 +24,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
 }
 
 if (isset($_SESSION['profil']['id'])) {
-    header('Location:index.php');
+    header('Location:../index.php');
 }
 
 

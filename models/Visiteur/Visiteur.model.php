@@ -136,7 +136,11 @@ SELECT id FROM commentaires) GROUP BY fk_id_commentaires");
     public function get_specific_cat($cat_spe, $premier1, $parPage1)
     {
 
-        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom FROM articles INNER JOIN categories ON categories.id = articles.id_categorie WHERE categories.nom = :nom_categorie ORDER BY date DESC LIMIT :premier, :parpage");
+        $req = $this->getBdd()->prepare("SELECT articles.id, articles.titre, articles.date, articles.description, articles.id_utilisateur, articles.article, articles.id_categorie, categories.image, categories.nom 
+        FROM articles 
+        INNER JOIN categories ON categories.id = articles.id_categorie 
+        WHERE categories.nom = :nom_categorie 
+        ORDER BY date DESC LIMIT :premier, :parpage");
         $req->bindValue(":nom_categorie", $cat_spe, PDO::PARAM_STR);
         $req->bindValue(":premier", $premier1, PDO::PARAM_INT);
         $req->bindValue(":parpage", $parPage1, PDO::PARAM_INT);

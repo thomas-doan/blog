@@ -139,6 +139,8 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
             <div class="nav_pagination">
                 <ul class="pagination">
                     <?php if (isset($_GET['categorie'])) { ?>
+
+
                         <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
                             <a href="./articles.php?page=<?= $currentPage - 1 ?>&categorie=<?= $_GET['categorie'] ?>" class="page-link">Précédente</a>
                         </li>
@@ -150,7 +152,11 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
                         <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
                             <a href="./articles.php?page=<?= $currentPage + 1 ?>&categorie=<?= $_GET['categorie'] ?>" class="page-link">Suivante</a>
                         </li>
+
+
                     <?php } else { ?>
+
+
                         <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
                             <a href="./articles.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
                         </li>
@@ -162,6 +168,8 @@ if (isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['page
                         <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
                             <a href="./articles.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
                         </li>
+
+
                     <?php } ?>
                 </ul>
             </div>

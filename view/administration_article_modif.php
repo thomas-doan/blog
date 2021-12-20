@@ -17,10 +17,10 @@ $administrateurController = new AdministrateurController();
 if (!Securite::estConnecte()) {
 
 
-    header('Location:index.php');
+    header('Location:../index.php');
 }
 if (Securite::estUtilisateur()) {
-    header('Location:index.php');
+    header('Location:../index.php');
 }
 
 

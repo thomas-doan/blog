@@ -99,8 +99,9 @@ if (isset($_POST['message'])) {
                     <div class="titre" data-aos="fade-down" data-aos-duration="2000">
                         <p><?= $data_article['titre'] ?></p>
                     </div>
-                    <div class="article" data-aos="fade-right" data-aos-duration="2000">
-                        <p><?= $data_article['article'] ?></p>
+                    <div class="article" data-aos="fade-up" data-aos-duration="2000">
+                        <p><?= $data_article['article'] ?>
+                        </p>
                     </div>
                     <div class="com">
 

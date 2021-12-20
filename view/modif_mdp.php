@@ -15,7 +15,7 @@ require_once(__DIR__ . "/../controllers/Administrateur/Administrateur.controller
 
 
 if (!isset($_SESSION['profil']['id'])) {
-    header('Location:index.php');
+    header('Location:../index.php');
 }
 
 $utilisateurController = new UtilisateurController();

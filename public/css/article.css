@@ -25,7 +25,8 @@
 .image_article {
     grid-area: image;
     margin: 0;
-    padding: 0;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-top: 6%;
     display: flex;
     justify-content: center;

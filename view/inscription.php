@@ -30,7 +30,7 @@ if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['conf
 }
 
 if (Securite::estConnecte()) {
-    header('Location:index.php');
+    header('Location:../index.php');
 }
 
 ?>

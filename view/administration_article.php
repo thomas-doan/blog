@@ -15,10 +15,10 @@ require_once(__DIR__ . "/../controllers/Administrateur/Administrateur.controller
 if (!Securite::estConnecte()) {
 
 
-    header('Location:index.php');
+    header('Location:../index.php');
 }
 if (Securite::estUtilisateur()) {
-    header('Location:index.php');
+    header('Location: ../index.php');
 }
 
 
